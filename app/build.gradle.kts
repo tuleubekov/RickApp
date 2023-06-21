@@ -36,26 +36,38 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     // Core Android dependencies
-    implementation(Dependencies.Core.androidxCoreKtx)
-    implementation(Dependencies.Core.appCompat)
-    implementation(Dependencies.Core.material)
-    implementation(Dependencies.Core.constraint)
+    implementation(Deps.Core.androidxCoreKtx)
+    implementation(Deps.Core.appCompat)
+    implementation(Deps.Core.material)
+    implementation(Deps.Core.constraint)
+    implementation(Deps.Core.splashScreen)
+
+    // Nav
+    implementation(Deps.Nav.navigationFragment)
+    implementation(Deps.Nav.navigationUi)
 
     // Network
-    implementation(Dependencies.Network.retrofit)
-    implementation(Dependencies.Network.retrofitConverterGson)
+    implementation(Deps.Network.retrofit)
+    implementation(Deps.Network.retrofitConverterGson)
+    implementation(Deps.Network.retrofitLogging)
 
     // Other
-    implementation(Dependencies.Other.gson)
-    implementation(Dependencies.Other.time)
+    implementation(Deps.Other.gson)
+    implementation(Deps.Other.time)
+    implementation(Deps.Other.glide)
+    implementation(Deps.Other.timber)
+    implementation(Deps.Other.viewBindingDelegate)
 
     // Tests
-    testImplementation(Dependencies.Test.junit)
-    androidTestImplementation(Dependencies.Test.extJunit)
-    androidTestImplementation(Dependencies.Test.espressoCore)
+    testImplementation(Deps.Test.junit)
+    androidTestImplementation(Deps.Test.extJunit)
+    androidTestImplementation(Deps.Test.espressoCore)
 }
