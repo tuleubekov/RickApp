@@ -7,21 +7,9 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.berg.rickapp.presentation.tabs.HomeFragment"
+        android:name="com.berg.rickapp.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/charactersFragment"
-        android:name="com.berg.rickapp.presentation.tabs.ListCharacterFragment"
-        android:label="fragment_character_list"
-        tools:layout="@layout/fragment_character_list" />
-
-    <fragment
-        android:id="@+id/episodesFragment"
-        android:name="com.berg.rickapp.presentation.tabs.ListEpisodeFragment"
-        android:label="fragment_episode_list"
-        tools:layout="@layout/fragment_episode_list" />
 
     <fragment
         android:id="@+id/locationsFragment"

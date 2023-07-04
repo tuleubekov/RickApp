@@ -59,6 +59,10 @@ dependencies {
     implementation(Deps.Network.retrofitConverterGson)
     implementation(Deps.Network.retrofitLogging)
 
+    // Di
+    implementation(Deps.Di.dagger)
+    kapt(Deps.Di.daggerCompiler)
+
     // Other
     implementation(Deps.Other.gson)
     implementation(Deps.Other.time)
@@ -70,4 +74,10 @@ dependencies {
     testImplementation(Deps.Test.junit)
     androidTestImplementation(Deps.Test.extJunit)
     androidTestImplementation(Deps.Test.espressoCore)
+
+    // Modules
+    implementation(project(Modules.core))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
+    implementation(project(Modules.Features.home))
 }

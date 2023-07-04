@@ -2,12 +2,14 @@ object Deps {
 
     object Core {
         private const val versionCoreKtx = "1.10.1"
+        private const val versionFragmentKtx = "1.5.5"
         private const val versionAppCompat = "1.6.1"
         private const val versionMaterial = "1.9.0"
         private const val versionConstraint = "2.1.4"
         private const val versionSplash = "1.0.1"
 
         const val androidxCoreKtx = "androidx.core:core-ktx:$versionCoreKtx"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:$versionFragmentKtx"
         const val appCompat = "androidx.appcompat:appcompat:$versionAppCompat"
         const val material = "com.google.android.material:material:$versionMaterial"
         const val constraint = "androidx.constraintlayout:constraintlayout:$versionConstraint"
@@ -27,6 +29,12 @@ object Deps {
         const val retrofit = "com.squareup.retrofit2:retrofit:$versionRetrofit"
         const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:$versionRetrofit"
         const val retrofitLogging = "com.squareup.okhttp3:logging-interceptor:$versionLogging"
+    }
+
+    object Di {
+        private const val versionDagger = "2.46.1"
+        const val dagger = "com.google.dagger:dagger:$versionDagger"
+        const val daggerCompiler = "com.google.dagger:dagger-compiler:$versionDagger"
     }
 
     object Other {

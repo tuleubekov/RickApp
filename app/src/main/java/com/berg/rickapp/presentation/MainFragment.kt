@@ -8,7 +8,7 @@ import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.berg.rickapp.R
 import com.berg.rickapp.core.logD
 import com.berg.rickapp.databinding.FragmentMainBinding
-import com.berg.rickapp.presentation.base.BaseFragment
+import com.berg.rickapp.core.BaseFragment
 
 class MainFragment : BaseFragment(R.layout.fragment_main) {
 
