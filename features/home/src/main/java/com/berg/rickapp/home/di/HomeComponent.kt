@@ -1,15 +1,16 @@
 package com.berg.rickapp.home.di
 
+import com.berg.rickapp.core.di.AppViewModelFactory
+import com.berg.rickapp.core.di.BaseAppComponent
+import com.berg.rickapp.core.di.ComponentStorage
 import com.berg.rickapp.core.di.ScreenScope
-import com.berg.rickapp.core.di.getComponent
-import com.berg.rickapp.home.HomeFragment
 import dagger.Component
 
 @ScreenScope
 @Component(dependencies = [HomeComponentDependencies::class], modules = [HomeDataModule::class])
 interface HomeComponent {
 
-    fun injectHomeFragment(fragmentHome: HomeFragment)
+    fun viewModelFactory(): AppViewModelFactory
 
     @Component.Factory
     interface Factory {
@@ -18,20 +19,16 @@ interface HomeComponent {
 
     companion object {
 
-        private var homeComponent: HomeComponent? = null
-
-        fun create() {
-//            homeComponent = DaggerHomeComponent.builder().build()
+        fun getOrCreate(): HomeComponent {
+            val homeDependencies =
+                ComponentStorage.get(BaseAppComponent::class) as HomeComponentDependencies
+            return ComponentStorage.getOrCreate(HomeComponent::class) {
+                DaggerHomeComponent.factory().create(homeDependencies)
+            } as HomeComponent
         }
 
         fun destroy() {
-            homeComponent = null
+            ComponentStorage.destroy(HomeComponent::class)
         }
     }
-}
-
-fun HomeFragment.inject() {
-    getComponent {
-        DaggerHomeComponent.factory().create(requireContext().homeDependencies())
-    }.injectHomeFragment(this)
 }
