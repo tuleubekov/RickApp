@@ -1,6 +1,7 @@
 package com.berg.rickapp.home.di
 
 import androidx.lifecycle.ViewModel
+import com.berg.rickapp.core.di.ScreenScope
 import com.berg.rickapp.core.di.ViewModelKey
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.domain.HomeInteractorImpl
@@ -20,8 +21,10 @@ interface HomeDataModule {
     fun bindViewModel(homeViewModel: HomeViewModel): ViewModel
 
     @Binds
+    @ScreenScope
     fun provideHomeInteractor(homeInteractorImpl: HomeInteractorImpl): HomeInteractor
 
     @Binds
+    @ScreenScope
     fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
 }

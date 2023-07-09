@@ -10,7 +10,7 @@ import dagger.Component
 @Component(dependencies = [HomeComponentDependencies::class], modules = [HomeDataModule::class])
 interface HomeComponent {
 
-    fun viewModelFactory(): AppViewModelFactory
+    fun getViewModelFactory(): AppViewModelFactory
 
     @Component.Factory
     interface Factory {

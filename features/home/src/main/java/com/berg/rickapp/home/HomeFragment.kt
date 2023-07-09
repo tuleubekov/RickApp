@@ -12,11 +12,16 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val component by lazy { HomeComponent.getOrCreate() }
-    private val viewModel by viewModels<HomeViewModel> { component.viewModelFactory() }
+    private val viewModel by viewModels<HomeViewModel> { component.getViewModelFactory() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.get()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        HomeComponent.destroy()
     }
 
 }
