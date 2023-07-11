@@ -7,7 +7,7 @@ import com.berg.rickapp.domain.model.Character
 import javax.inject.Inject
 
 interface RemoteDataSource {
-    suspend fun getSingleCharacter(): Character
+    suspend fun getSingleCharacter(url: String): Character
 }
 
 class RemoteDataSourceImpl @Inject constructor(
@@ -16,7 +16,7 @@ class RemoteDataSourceImpl @Inject constructor(
 
     private val mapper: CharacterMapper = DefaultCharacterMapper()
 
-    override suspend fun getSingleCharacter(): Character {
-        return api.getSingleCharacter().let(mapper::map)
+    override suspend fun getSingleCharacter(url: String): Character {
+        return api.getSingleCharacter(url).let(mapper::map)
     }
 }

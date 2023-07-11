@@ -20,7 +20,9 @@ class HomeViewModel @Inject constructor(
 
     private fun get() {
         viewModelScope.launch {
-            kotlin.runCatching { interactor.getCharacter() }
+            kotlin.runCatching {
+                interactor.getCharacter("https://rickandmortyapi.com/api/character/2")
+            }
                 .onSuccess {
                     logE("success= $it")
                     mCharacter.value = it.name

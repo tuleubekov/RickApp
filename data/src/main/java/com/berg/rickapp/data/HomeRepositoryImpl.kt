@@ -9,8 +9,8 @@ class HomeRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
 ) : HomeRepository {
 
-    override suspend fun getCharacter(): Character {
-        return remoteDataSource.getSingleCharacter()
+    override suspend fun getCharacter(url: String): Character {
+        return remoteDataSource.getSingleCharacter(url)
     }
 
 }

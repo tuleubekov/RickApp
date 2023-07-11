@@ -6,15 +6,15 @@ import javax.inject.Inject
 
 interface HomeInteractor {
 
-    suspend fun getCharacter(): Character
+    suspend fun getCharacter(url: String): Character
 }
 
 class HomeInteractorImpl @Inject constructor(
     private val homeRepository: HomeRepository
 ) : HomeInteractor {
 
-    override suspend fun getCharacter(): Character {
-        return homeRepository.getCharacter()
+    override suspend fun getCharacter(url: String): Character {
+        return homeRepository.getCharacter(url)
     }
 
 }

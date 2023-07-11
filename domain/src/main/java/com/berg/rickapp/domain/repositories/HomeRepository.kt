@@ -4,5 +4,5 @@ import com.berg.rickapp.domain.model.Character
 
 
 interface HomeRepository {
-    suspend fun getCharacter(): Character
+    suspend fun getCharacter(url: String): Character
 }
