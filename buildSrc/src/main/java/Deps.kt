@@ -24,10 +24,12 @@ object Deps {
 
     object Network {
         private const val versionRetrofit = "2.9.0"
+        private const val versionKConverter = "1.0.0"
         private const val versionLogging = "4.11.0"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$versionRetrofit"
-        const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:$versionRetrofit"
+        const val retrofitConverterKSerilization =
+            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versionKConverter"
         const val retrofitLogging = "com.squareup.okhttp3:logging-interceptor:$versionLogging"
     }
 
@@ -38,18 +40,19 @@ object Deps {
     }
 
     object Other {
-        private const val versionGson = "2.10.1"
         private const val versionTime = "0.4.0"
         private const val versionGlide = "4.15.1"
         private const val versionViewBindingDelegate = "1.5.9"
         private const val versionTimber = "5.0.1"
+        private const val versionKSerialization = "1.5.1"
 
-        const val gson = "com.google.code.gson:gson:$versionGson"
         const val time = "org.jetbrains.kotlinx:kotlinx-datetime:$versionTime"
         const val glide = "com.github.bumptech.glide:glide:$versionGlide"
         const val timber = "com.jakewharton.timber:timber:$versionTimber"
         const val viewBindingDelegate =
             "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$versionViewBindingDelegate"
+        const val kserialization =
+            "org.jetbrains.kotlinx:kotlinx-serialization-json:$versionKSerialization"
     }
 
     object Test {

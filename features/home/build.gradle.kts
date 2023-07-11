@@ -55,7 +55,6 @@ dependencies {
     kapt(Deps.Di.daggerCompiler)
 
     // Other
-    implementation(Deps.Other.gson)
     implementation(Deps.Other.timber)
     implementation(Deps.Other.viewBindingDelegate)
 

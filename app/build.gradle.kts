@@ -56,7 +56,6 @@ dependencies {
 
     // Network
     implementation(Deps.Network.retrofit)
-    implementation(Deps.Network.retrofitConverterGson)
     implementation(Deps.Network.retrofitLogging)
 
     // Di
@@ -64,7 +63,6 @@ dependencies {
     kapt(Deps.Di.daggerCompiler)
 
     // Other
-    implementation(Deps.Other.gson)
     implementation(Deps.Other.time)
     implementation(Deps.Other.glide)
     implementation(Deps.Other.timber)

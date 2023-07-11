@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
 }
 
 repositories {
@@ -46,7 +47,7 @@ dependencies {
 
     // Network
     implementation(Deps.Network.retrofit)
-    implementation(Deps.Network.retrofitConverterGson)
+    implementation(Deps.Network.retrofitConverterKSerilization)
     implementation(Deps.Network.retrofitLogging)
 
     // Di
@@ -54,7 +55,7 @@ dependencies {
     kapt(Deps.Di.daggerCompiler)
 
     // Other
-    implementation(Deps.Other.gson)
+    implementation(Deps.Other.kserialization)
 
     // Modules
     implementation(project(Modules.core))

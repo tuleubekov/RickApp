@@ -48,7 +48,4 @@ dependencies {
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
-
-    // Other
-    implementation(Deps.Other.gson)
 }
