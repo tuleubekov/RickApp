@@ -6,6 +6,8 @@ import com.berg.rickapp.core.di.ViewModelKey
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.domain.HomeInteractorImpl
 import com.berg.rickapp.data.HomeRepositoryImpl
+import com.berg.rickapp.data.datasource.RemoteDataSource
+import com.berg.rickapp.data.datasource.RemoteDataSourceImpl
 import com.berg.rickapp.domain.repositories.HomeRepository
 import com.berg.rickapp.home.HomeViewModel
 import dagger.Binds
@@ -22,9 +24,13 @@ interface HomeDataModule {
 
     @Binds
     @ScreenScope
-    fun provideHomeInteractor(homeInteractorImpl: HomeInteractorImpl): HomeInteractor
+    fun bindHomeInteractor(homeInteractorImpl: HomeInteractorImpl): HomeInteractor
 
     @Binds
     @ScreenScope
-    fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
+    fun bindHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
+
+    @Binds
+    @ScreenScope
+    fun bindRemoteDataSource(remoteDataSourceImpl: RemoteDataSourceImpl): RemoteDataSource
 }

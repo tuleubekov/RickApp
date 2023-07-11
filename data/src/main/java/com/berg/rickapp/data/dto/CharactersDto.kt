@@ -1,4 +1,4 @@
-package com.berg.rickapp.model
+package com.berg.rickapp.data.dto
 
 import com.google.gson.annotations.SerializedName
 

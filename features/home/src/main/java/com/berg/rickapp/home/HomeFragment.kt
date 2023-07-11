@@ -16,7 +16,9 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.get()
+        viewModel.mCharacter.observe(viewLifecycleOwner) {
+            binding.txt.text = it
+        }
     }
 
     override fun onDestroy() {

@@ -1,6 +1,6 @@
 package com.berg.rickapp.data.api
 
-import com.google.gson.JsonObject
+import com.berg.rickapp.data.dto.CharacterDto
 import retrofit2.http.GET
 
 interface RickApi {
@@ -9,5 +9,5 @@ interface RickApi {
 //    suspend fun getAllCharacters(): CharacterListDto
 
     @GET("character/2")
-    suspend fun getSingleCharacter(): JsonObject
+    suspend fun getSingleCharacter(): CharacterDto
 }

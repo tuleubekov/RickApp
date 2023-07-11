@@ -1,19 +1,19 @@
 package com.berg.rickapp.domain
 
+import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.domain.repositories.HomeRepository
-import com.google.gson.JsonObject
 import javax.inject.Inject
 
 interface HomeInteractor {
 
-    suspend fun getCharacter(): JsonObject
+    suspend fun getCharacter(): Character
 }
 
 class HomeInteractorImpl @Inject constructor(
     private val homeRepository: HomeRepository
 ) : HomeInteractor {
 
-    override suspend fun getCharacter(): JsonObject {
+    override suspend fun getCharacter(): Character {
         return homeRepository.getCharacter()
     }
 

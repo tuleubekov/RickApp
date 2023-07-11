@@ -1,9 +1,8 @@
 package com.berg.rickapp.domain.repositories
 
-import com.google.gson.JsonObject
+import com.berg.rickapp.domain.model.Character
 
 
 interface HomeRepository {
-
-    suspend fun getCharacter(): JsonObject
+    suspend fun getCharacter(): Character
 }

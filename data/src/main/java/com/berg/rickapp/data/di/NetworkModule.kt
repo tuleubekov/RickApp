@@ -2,7 +2,6 @@ package com.berg.rickapp.data.di
 
 import com.berg.rickapp.data.BuildConfig
 import com.berg.rickapp.data.api.RickApi
-import com.berg.rickapp.data.datasource.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -13,9 +12,6 @@ import java.util.concurrent.TimeUnit
 
 @Module
 class NetworkModule {
-
-    @Provides
-    fun provideRemoteDataSource(api: RickApi): RemoteDataSource = RemoteDataSource(api)
 
     @Provides
     fun provideApi(retrofit: Retrofit): RickApi = retrofit.create(RickApi::class.java)

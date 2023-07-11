@@ -1,5 +1,6 @@
 package com.berg.rickapp.home
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.berg.rickapp.core.logE
@@ -11,10 +12,19 @@ class HomeViewModel @Inject constructor(
     private val interactor: HomeInteractor,
 ) : ViewModel() {
 
-    fun get() {
+    val mCharacter = MutableLiveData<String>()
+
+    init {
+        get()
+    }
+
+    private fun get() {
         viewModelScope.launch {
             kotlin.runCatching { interactor.getCharacter() }
-                .onSuccess { logE("success= $it") }
+                .onSuccess {
+                    logE("success= $it")
+                    mCharacter.value = it.name
+                }
                 .onFailure { logE("fail= $it") }
         }
     }

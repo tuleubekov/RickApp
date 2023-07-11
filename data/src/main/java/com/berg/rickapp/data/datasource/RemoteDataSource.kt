@@ -1,14 +1,22 @@
 package com.berg.rickapp.data.datasource
 
 import com.berg.rickapp.data.api.RickApi
-import com.google.gson.JsonObject
+import com.berg.rickapp.data.mapper.CharacterMapper
+import com.berg.rickapp.data.mapper.DefaultCharacterMapper
+import com.berg.rickapp.domain.model.Character
 import javax.inject.Inject
 
-class RemoteDataSource @Inject constructor(
-    private val api: RickApi,
-) {
+interface RemoteDataSource {
+    suspend fun getSingleCharacter(): Character
+}
 
-    suspend fun getSingleCharacter(): JsonObject {
-        return api.getSingleCharacter()
+class RemoteDataSourceImpl @Inject constructor(
+    private val api: RickApi,
+): RemoteDataSource {
+
+    private val mapper: CharacterMapper = DefaultCharacterMapper()
+
+    override suspend fun getSingleCharacter(): Character {
+        return api.getSingleCharacter().let(mapper::map)
     }
 }

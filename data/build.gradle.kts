@@ -57,5 +57,6 @@ dependencies {
     implementation(Deps.Other.gson)
 
     // Modules
+    implementation(project(Modules.core))
     implementation(project(Modules.domain))
 }
