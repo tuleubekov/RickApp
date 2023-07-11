@@ -42,31 +42,16 @@ android {
 }
 
 dependencies {
-
-    // Core Android dependencies
-    implementation(Deps.Core.androidxCoreKtx)
-    implementation(Deps.Core.appCompat)
-    implementation(Deps.Core.material)
-    implementation(Deps.Core.constraint)
-    implementation(Deps.Core.splashScreen)
-
     // Nav
     implementation(Deps.Nav.navigationFragment)
     implementation(Deps.Nav.navigationUi)
 
     // Network
     implementation(Deps.Network.retrofit)
-    implementation(Deps.Network.retrofitLogging)
 
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
-
-    // Other
-    implementation(Deps.Other.time)
-    implementation(Deps.Other.glide)
-    implementation(Deps.Other.timber)
-    implementation(Deps.Other.viewBindingDelegate)
 
     // Tests
     testImplementation(Deps.Test.junit)

@@ -40,11 +40,6 @@ android {
 }
 
 dependencies {
-
-    implementation(Deps.Core.androidxCoreKtx)
-    implementation(Deps.Core.appCompat)
-    implementation(Deps.Other.timber)
-
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
