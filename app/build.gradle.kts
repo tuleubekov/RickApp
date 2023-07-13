@@ -63,4 +63,5 @@ dependencies {
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
     implementation(project(Modules.Features.home))
+    implementation(project(Modules.Features.details))
 }

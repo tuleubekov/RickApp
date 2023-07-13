@@ -1,13 +1,13 @@
 package com.berg.rickapp.home.di
 
-import android.content.Context
-import com.berg.rickapp.data.api.RickApi
+import com.berg.rickapp.core.di.BaseAppComponent
+import com.berg.rickapp.core.di.ComponentStorage
+import com.berg.rickapp.domain.repositories.HomeRepository
 
 interface HomeComponentDependencies {
-    fun getRickApi(): RickApi
+    fun getCharactersRepository(): HomeRepository
 }
 
-fun Context.homeDependencies(): HomeComponentDependencies {
-    return (applicationContext as HomeComponentDependenciesProvider)
-        .getHomeComponentDependencies()
+fun Any.homeDependencies(): HomeComponentDependencies {
+    return ComponentStorage.get(BaseAppComponent::class) as HomeComponentDependencies
 }

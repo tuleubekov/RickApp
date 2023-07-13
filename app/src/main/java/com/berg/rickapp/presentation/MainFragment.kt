@@ -20,6 +20,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         logD("MainFragment onViewCreated")
         _binding = FragmentMainBinding.bind(view)
+//        val navHostFragment = fraMana
         navController = Navigation.findNavController(requireActivity(), R.id.fragment_container)
         setupWithNavController(binding.bottomNavView, navController)
         binding.bottomNavView.itemIconTintList = null

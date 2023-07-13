@@ -10,7 +10,7 @@ repositories {
 }
 
 android {
-    namespace = "com.berg.rickapp.home"
+    namespace = "com.berg.rickapp.details"
     compileSdk = 33
 
     defaultConfig {
@@ -44,11 +44,9 @@ android {
 
 dependencies {
     // Core Android dependencies
-    implementation(Deps.Core.androidxCoreKtx)
     implementation(Deps.Core.fragmentKtx)
     implementation(Deps.Core.appCompat)
     implementation(Deps.Core.constraint)
-    implementation(Deps.Core.material)
 
     // Di
     implementation(Deps.Di.dagger)

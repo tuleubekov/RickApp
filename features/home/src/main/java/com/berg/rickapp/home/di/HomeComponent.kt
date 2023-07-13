@@ -20,10 +20,8 @@ interface HomeComponent {
     companion object {
 
         fun getOrCreate(): HomeComponent {
-            val homeDependencies =
-                ComponentStorage.get(BaseAppComponent::class) as HomeComponentDependencies
             return ComponentStorage.getOrCreate(HomeComponent::class) {
-                DaggerHomeComponent.factory().create(homeDependencies)
+                DaggerHomeComponent.factory().create(homeDependencies())
             } as HomeComponent
         }
 
