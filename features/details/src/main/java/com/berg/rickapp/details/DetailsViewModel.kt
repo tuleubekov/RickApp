@@ -3,12 +3,12 @@ package com.berg.rickapp.details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.berg.rickapp.core.common.logE
-import com.berg.rickapp.domain.DetailsInteractor
+import com.berg.rickapp.domain.HomeInteractor
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailsViewModel @Inject constructor(
-    private val interactor: DetailsInteractor,
+    private val interactor: HomeInteractor,
 ): ViewModel() {
 
     fun get() {

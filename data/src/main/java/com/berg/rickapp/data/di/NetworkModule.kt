@@ -1,11 +1,7 @@
 package com.berg.rickapp.data.di
 
 import com.berg.rickapp.data.BuildConfig
-import com.berg.rickapp.data.HomeRepositoryImpl
 import com.berg.rickapp.data.api.RickApi
-import com.berg.rickapp.data.datasource.RemoteDataSource
-import com.berg.rickapp.data.datasource.RemoteDataSourceImpl
-import com.berg.rickapp.domain.repositories.HomeRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -19,16 +15,6 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-
-    @Provides
-    @Singleton
-    fun provideCharactersRepository(remoteDataSource: RemoteDataSource): HomeRepository {
-        return HomeRepositoryImpl(remoteDataSource)
-    }
-
-    @Provides
-    @Singleton
-    fun provideRemoteDataSource(api: RickApi): RemoteDataSource = RemoteDataSourceImpl(api)
 
     @Provides
     @Singleton

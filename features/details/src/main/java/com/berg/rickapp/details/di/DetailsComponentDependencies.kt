@@ -2,10 +2,10 @@ package com.berg.rickapp.details.di
 
 import com.berg.rickapp.core.common.di.BaseAppComponent
 import com.berg.rickapp.core.common.di.ComponentStorage
-import com.berg.rickapp.domain.repositories.HomeRepository
+import com.berg.rickapp.domain.HomeInteractor
 
 interface DetailsComponentDependencies {
-    fun getCharactersRepository(): HomeRepository
+    fun getHomeInteractor(): HomeInteractor
 }
 
 fun Any.getDetailsDependencies(): DetailsComponentDependencies {
