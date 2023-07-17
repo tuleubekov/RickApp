@@ -1,10 +1,9 @@
 package com.berg.rickapp
 
 import android.app.Application
-import com.berg.rickapp.core.di.BaseAppComponent
-import com.berg.rickapp.core.di.ComponentStorage
 import com.berg.rickapp.core.timberDebug
 import com.berg.rickapp.di.AppComponent
+import com.berg.rickapp.navigation.NavigationActivityProvider
 
 class RickApp : Application() {
 
@@ -15,7 +14,7 @@ class RickApp : Application() {
     }
 
     private fun initAppComponent() {
-        ComponentStorage.getOrCreate(BaseAppComponent::class) { AppComponent.create() }
+        AppComponent.create(NavigationActivityProvider(this))
     }
 
     private fun initTimber() {

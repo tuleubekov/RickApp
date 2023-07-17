@@ -19,6 +19,10 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         viewModel.mCharacter.observe(viewLifecycleOwner) {
             binding.txt.text = it
         }
+        binding.btnGo.setOnClickListener {
+            viewModel.gotoDetails()
+        }
+
     }
 
     override fun onDestroy() {
