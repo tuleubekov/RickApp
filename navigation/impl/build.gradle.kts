@@ -10,7 +10,7 @@ repositories {
 }
 
 android {
-    namespace = "com.berg.rickapp.details"
+    namespace = "com.berg.rickapp.navigation.impl"
     compileSdk = 33
 
     defaultConfig {
@@ -43,21 +43,24 @@ android {
 }
 
 dependencies {
-    // Core Android dependencies
+    // Core
+    implementation(Deps.Core.androidxCoreKtx)
     implementation(Deps.Core.fragmentKtx)
     implementation(Deps.Core.appCompat)
     implementation(Deps.Core.constraint)
+    implementation(Deps.Core.material)
+
+    // Nav
+    implementation(Deps.Nav.navigationFragment)
+    implementation(Deps.Nav.navigationUi)
 
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
 
-    // Other
-    implementation(Deps.Other.viewBindingDelegate)
-
     // Modules
     implementation(project(Modules.corePresentation))
-    implementation(project(Modules.data))
-    implementation(project(Modules.domain))
-    implementation(project(Modules.navigationApi))
+    implementation(project(Modules.Features.home))
+    implementation(project(Modules.Features.details))
+    api(project(Modules.navigationApi))
 }

@@ -47,5 +47,6 @@ dependencies {
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
 
+    api(Deps.Other.viewBindingDelegate)
     api(project(Modules.coreCommon))
 }

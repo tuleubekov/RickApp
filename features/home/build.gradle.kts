@@ -61,4 +61,5 @@ dependencies {
     implementation(project(Modules.corePresentation))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
+    implementation(project(Modules.navigationApi))
 }

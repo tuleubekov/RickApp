@@ -3,7 +3,8 @@ package com.berg.rickapp.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.berg.rickapp.databinding.ActivityMainBinding
-import com.berg.rickapp.navigation.NavigationFragmentProvider
+import com.berg.rickapp.navigation.impl.MainFragment
+import com.berg.rickapp.navigation.impl.provider.NavigationFragmentProvider
 
 class MainActivity : AppCompatActivity(), NavigationFragmentProvider {
 

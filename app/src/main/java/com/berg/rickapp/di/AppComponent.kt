@@ -5,7 +5,8 @@ import com.berg.rickapp.core.common.di.ComponentStorage
 import com.berg.rickapp.data.di.NetworkModule
 import com.berg.rickapp.details.di.DetailsComponentDependencies
 import com.berg.rickapp.home.di.HomeComponentDependencies
-import com.berg.rickapp.navigation.NavigationActivityProvider
+import com.berg.rickapp.navigation.impl.di.NavigationModule
+import com.berg.rickapp.navigation.impl.provider.NavigationActivityProvider
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

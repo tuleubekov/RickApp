@@ -62,6 +62,7 @@ dependencies {
     implementation(project(Modules.corePresentation))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
+    implementation(project(Modules.navigationImpl))
     implementation(project(Modules.Features.home))
     implementation(project(Modules.Features.details))
 }

@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.berg.rickapp.presentation.MainFragment"
+    android:name="com.berg.rickapp.navigation.impl.MainFragment"
     android:id="@+id/container"
     tools:context=".presentation.MainActivity" />
