@@ -1,8 +1,8 @@
 package com.berg.rickapp.details.di
 
-import com.berg.rickapp.core.di.AppViewModelFactory
-import com.berg.rickapp.core.di.ComponentStorage
-import com.berg.rickapp.core.di.ScreenScope
+import com.berg.rickapp.core.presentation.di.AppViewModelFactory
+import com.berg.rickapp.core.common.di.ComponentStorage
+import com.berg.rickapp.core.common.di.ScreenScope
 import dagger.Component
 
 @ScreenScope
@@ -20,7 +20,7 @@ interface DetailsComponent {
 
         fun getOrCreate(): DetailsComponent {
             return ComponentStorage.getOrCreate(DetailsComponent::class) {
-                DaggerDetailsComponent.factory().create(detailsDependencies())
+                DaggerDetailsComponent.factory().create(getDetailsDependencies())
             } as DetailsComponent
         }
 

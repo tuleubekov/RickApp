@@ -56,7 +56,7 @@ dependencies {
     implementation(Deps.Other.viewBindingDelegate)
 
     // Modules
-    implementation(project(Modules.core))
+    implementation(project(Modules.corePresentation))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
 }

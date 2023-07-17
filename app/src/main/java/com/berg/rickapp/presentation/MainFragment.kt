@@ -6,8 +6,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.berg.rickapp.R
-import com.berg.rickapp.core.BaseFragment
-import com.berg.rickapp.core.logD
+import com.berg.rickapp.core.presentation.BaseFragment
+import com.berg.rickapp.core.common.logD
 import com.berg.rickapp.databinding.FragmentMainBinding
 
 class MainFragment : BaseFragment(R.layout.fragment_main) {
@@ -29,11 +29,11 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
     }
 
     private fun setupBackButton() {
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner,
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     if (!navController.navigateUp()) {
-                        activity?.finish()
+                        requireActivity().finish()
                     }
                 }
             }

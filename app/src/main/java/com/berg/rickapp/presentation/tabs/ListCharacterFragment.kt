@@ -3,8 +3,8 @@ package com.berg.rickapp.presentation.tabs
 import android.os.Bundle
 import android.view.View
 import com.berg.rickapp.R
-import com.berg.rickapp.core.logD
-import com.berg.rickapp.core.BaseFragment
+import com.berg.rickapp.core.common.logD
+import com.berg.rickapp.core.presentation.BaseFragment
 
 class ListCharacterFragment : BaseFragment(R.layout.fragment_character_list) {
 

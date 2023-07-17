@@ -2,7 +2,7 @@ package com.berg.rickapp.navigation.api
 
 import androidx.navigation.NavController
 import com.berg.rickapp.R
-import com.berg.rickapp.core.navigation.NavigationApi
+import com.berg.rickapp.core.presentation.navigation.NavigationApi
 import com.berg.rickapp.home.navigation.HomeDirections
 import javax.inject.Inject
 

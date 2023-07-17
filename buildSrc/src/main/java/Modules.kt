@@ -1,6 +1,7 @@
 object Modules {
 
-    const val core = ":core"
+    const val coreCommon = ":core:common"
+    const val corePresentation = ":core:presentation"
     const val data = ":data"
     const val domain = ":domain"
 

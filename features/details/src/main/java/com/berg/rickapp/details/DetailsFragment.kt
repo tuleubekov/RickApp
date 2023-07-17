@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.berg.rickapp.core.BaseFragment
+import com.berg.rickapp.core.presentation.BaseFragment
 import com.berg.rickapp.details.databinding.FragmentDetailsBinding
 import com.berg.rickapp.details.di.DetailsComponent
 

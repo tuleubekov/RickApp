@@ -1,7 +1,8 @@
 package com.berg.rickapp
 
 import android.app.Application
-import com.berg.rickapp.core.timberDebug
+import androidx.viewbinding.BuildConfig
+import com.berg.rickapp.core.common.timberDebug
 import com.berg.rickapp.di.AppComponent
 import com.berg.rickapp.navigation.NavigationActivityProvider
 

@@ -3,8 +3,8 @@ package com.berg.rickapp.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.berg.rickapp.core.logE
-import com.berg.rickapp.core.navigation.NavigationApi
+import com.berg.rickapp.core.common.logE
+import com.berg.rickapp.core.presentation.navigation.NavigationApi
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.home.navigation.HomeDirections
 import kotlinx.coroutines.launch

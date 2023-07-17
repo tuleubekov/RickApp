@@ -18,7 +18,8 @@ pluginManagement {
 
 rootProject.name = "RickApp"
 include(":app")
-include(":core")
+include(":core:common")
+include(":core:presentation")
 include(":data")
 include(":domain")
 include(":features:home")

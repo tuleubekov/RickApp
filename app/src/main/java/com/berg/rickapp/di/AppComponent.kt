@@ -1,7 +1,7 @@
 package com.berg.rickapp.di
 
-import com.berg.rickapp.core.di.BaseAppComponent
-import com.berg.rickapp.core.di.ComponentStorage
+import com.berg.rickapp.core.common.di.BaseAppComponent
+import com.berg.rickapp.core.common.di.ComponentStorage
 import com.berg.rickapp.data.di.NetworkModule
 import com.berg.rickapp.details.di.DetailsComponentDependencies
 import com.berg.rickapp.home.di.HomeComponentDependencies

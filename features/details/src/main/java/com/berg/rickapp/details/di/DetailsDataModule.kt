@@ -1,8 +1,8 @@
 package com.berg.rickapp.details.di
 
 import androidx.lifecycle.ViewModel
-import com.berg.rickapp.core.di.ScreenScope
-import com.berg.rickapp.core.di.ViewModelKey
+import com.berg.rickapp.core.common.di.ScreenScope
+import com.berg.rickapp.core.presentation.di.ViewModelKey
 import com.berg.rickapp.details.DetailsViewModel
 import com.berg.rickapp.domain.DetailsInteractor
 import com.berg.rickapp.domain.DetailsInteractorImpl

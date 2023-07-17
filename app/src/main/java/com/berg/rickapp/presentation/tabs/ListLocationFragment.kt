@@ -3,8 +3,8 @@ package com.berg.rickapp.presentation.tabs
 import android.os.Bundle
 import android.view.View
 import com.berg.rickapp.R
-import com.berg.rickapp.core.logE
-import com.berg.rickapp.core.BaseFragment
+import com.berg.rickapp.core.common.logE
+import com.berg.rickapp.core.presentation.BaseFragment
 
 class ListLocationFragment : BaseFragment(R.layout.fragment_location_list) {
 

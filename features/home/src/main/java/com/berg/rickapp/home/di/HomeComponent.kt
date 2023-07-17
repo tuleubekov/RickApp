@@ -1,9 +1,8 @@
 package com.berg.rickapp.home.di
 
-import com.berg.rickapp.core.di.AppViewModelFactory
-import com.berg.rickapp.core.di.BaseAppComponent
-import com.berg.rickapp.core.di.ComponentStorage
-import com.berg.rickapp.core.di.ScreenScope
+import com.berg.rickapp.core.presentation.di.AppViewModelFactory
+import com.berg.rickapp.core.common.di.ComponentStorage
+import com.berg.rickapp.core.common.di.ScreenScope
 import dagger.Component
 
 @ScreenScope
@@ -21,7 +20,7 @@ interface HomeComponent {
 
         fun getOrCreate(): HomeComponent {
             return ComponentStorage.getOrCreate(HomeComponent::class) {
-                DaggerHomeComponent.factory().create(homeDependencies())
+                DaggerHomeComponent.factory().create(getHomeDependencies())
             } as HomeComponent
         }
 

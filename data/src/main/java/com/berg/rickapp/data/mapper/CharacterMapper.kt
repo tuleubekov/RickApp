@@ -1,6 +1,6 @@
 package com.berg.rickapp.data.mapper
 
-import com.berg.rickapp.core.mapper.Mapper
+import com.berg.rickapp.core.common.mapper.Mapper
 import com.berg.rickapp.data.dto.CharacterDto
 import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.domain.model.UrlSchemeModel

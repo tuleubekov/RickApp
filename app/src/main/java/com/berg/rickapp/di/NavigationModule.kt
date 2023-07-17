@@ -1,7 +1,7 @@
 package com.berg.rickapp.di
 
 import androidx.navigation.NavController
-import com.berg.rickapp.core.navigation.NavigationApi
+import com.berg.rickapp.core.presentation.navigation.NavigationApi
 import com.berg.rickapp.home.navigation.HomeDirections
 import com.berg.rickapp.navigation.NavigationActivityProvider
 import com.berg.rickapp.navigation.api.HomeNavigationImpl
