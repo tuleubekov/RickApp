@@ -25,7 +25,7 @@ interface HomeComponent {
         }
 
         fun destroy() {
-            ComponentStorage.destroy(HomeComponent::class)
+            ComponentStorage.remove(HomeComponent::class)
         }
     }
 }

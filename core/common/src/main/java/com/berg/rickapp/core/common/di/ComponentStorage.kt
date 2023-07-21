@@ -21,9 +21,10 @@ object ComponentStorage {
         return component
     }
 
-    fun get(clazz: KClass<out Any>): Any? = map[clazz]
+    fun get(clazz: KClass<out Any>): Any =
+        map[clazz] ?: error("Not found instance of class: $clazz")
 
-    fun destroy(clazz: KClass<out Any>) {
+    fun remove(clazz: KClass<out Any>) {
         map.remove(clazz)
     }
 
