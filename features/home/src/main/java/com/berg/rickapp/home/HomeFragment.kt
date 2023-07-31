@@ -1,33 +1,35 @@
 package com.berg.rickapp.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import by.kirich1409.viewbindingdelegate.viewBinding
-import com.berg.rickapp.core.presentation.BaseFragment
-import com.berg.rickapp.home.databinding.FragmentHomeBinding
 import com.berg.rickapp.home.di.HomeComponent
+import com.berg.rickapp.home.screen.HomeScreenRoot
 
-class HomeFragment : BaseFragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
 
-    private val binding by viewBinding(FragmentHomeBinding::bind)
     private val component by lazy { HomeComponent.getOrCreate() }
     private val viewModel by viewModels<HomeViewModel> { component.getViewModelFactory() }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.mCharacter.observe(viewLifecycleOwner) {
-            binding.txt.text = it
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return ComposeView(requireContext()).apply {
+            setContent { HomeScreenRoot(viewModel) }
         }
-        binding.btnGo.setOnClickListener {
-            viewModel.gotoDetails()
-        }
-
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        HomeComponent.destroy()
+        if (isRemoving && parentFragment?.isRemoving == true) {
+            HomeComponent.destroy()
+        }
     }
 
 }

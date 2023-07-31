@@ -39,6 +39,10 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Deps.Compose.versionCompose
     }
 }
 
@@ -50,12 +54,33 @@ dependencies {
     implementation(Deps.Core.constraint)
     implementation(Deps.Core.material)
 
+    // Compose
+    val composeBom = platform(Deps.Compose.composeBom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    implementation(Deps.Compose.runtime)
+    implementation(Deps.Compose.ui)
+    implementation(Deps.Compose.foundation)
+    implementation(Deps.Compose.foundationLayout)
+    implementation(Deps.Compose.material)
+    implementation(Deps.Compose.runtimeLivedata)
+    implementation(Deps.Compose.viewModelCompose)
+    implementation(Deps.Compose.toolingPreview)
+    debugImplementation(Deps.Compose.uiTooling)
+    implementation(Deps.Compose.accomponistThemeAdapterMaterial)
+
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
 
     // Other
     implementation(Deps.Other.viewBindingDelegate)
+
+    // Tests
+    testImplementation(Deps.Test.junit)
+    androidTestImplementation(Deps.Test.extJunit)
+    androidTestImplementation(Deps.Test.espressoCore)
 
     // Modules
     implementation(project(Modules.corePresentation))

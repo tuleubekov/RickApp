@@ -38,10 +38,29 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Deps.Compose.versionCompose
     }
 }
 
 dependencies {
+    // Compose
+    val composeBom = platform(Deps.Compose.composeBom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    implementation(Deps.Compose.runtime)
+    implementation(Deps.Compose.ui)
+    implementation(Deps.Compose.foundation)
+    implementation(Deps.Compose.foundationLayout)
+    implementation(Deps.Compose.material)
+    implementation(Deps.Compose.runtimeLivedata)
+    implementation(Deps.Compose.toolingPreview)
+    debugImplementation(Deps.Compose.uiTooling)
+    implementation(Deps.Compose.accomponistThemeAdapterMaterial)
+
     // Nav
     implementation(Deps.Nav.navigationFragment)
     implementation(Deps.Nav.navigationUi)
