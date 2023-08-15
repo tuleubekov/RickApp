@@ -10,7 +10,7 @@ import javax.inject.Inject
 class HomeRouterImpl @Inject constructor() : HomeRouter {
 
     override fun navigateToDetails(): NavigationEvent {
-        DetailsComponent.createAndRegister(getDetailsDependencies())
+        DetailsComponent.init(getDetailsDependencies())
         return NavigationEvent.Forward(
             hostId = R.id.tabs_host_fragment,
             id = R.id.action_homeFragment_to_detailsFragment

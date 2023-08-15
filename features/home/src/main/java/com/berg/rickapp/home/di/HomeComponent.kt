@@ -18,14 +18,10 @@ interface HomeComponent {
 
     companion object {
 
-        fun getOrCreate(): HomeComponent {
-            return ComponentStorage.getOrCreate(HomeComponent::class) {
-                DaggerHomeComponent.factory().create(getHomeDependencies())
-            } as HomeComponent
+        fun getOrCreate(): HomeComponent = ComponentStorage.getOrCreate(HomeComponent::class) {
+            DaggerHomeComponent.factory().create(getHomeDependencies())
         }
 
-        fun destroy() {
-            ComponentStorage.remove(HomeComponent::class)
-        }
+        fun destroy() = ComponentStorage.remove(HomeComponent::class)
     }
 }

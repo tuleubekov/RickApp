@@ -11,8 +11,7 @@
         android:label="fragment_tabs"
         tools:layout="@layout/fragment_tabs">
         <action android:id="@+id/action_tabsFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment"
-            app:popUpTo="@id/tabsFragment"/>
+            app:destination="@id/aboutFragment"/>
     </fragment>
 
     <fragment

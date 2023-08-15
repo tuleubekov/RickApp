@@ -18,24 +18,13 @@ interface DetailsComponent {
 
     companion object {
 
-        fun createAndRegister(dependencies: DetailsComponentDependencies) {
+        fun init(dependencies: DetailsComponentDependencies) =
             ComponentStorage.create(DetailsComponent::class) {
                 DaggerDetailsComponent.factory().create(dependencies)
             }
-        }
 
-        fun get(): DetailsComponent {
-            return ComponentStorage.get(DetailsComponent::class) as DetailsComponent
-        }
+        fun get(): DetailsComponent = ComponentStorage.get(DetailsComponent::class)
 
-        fun getOrCreate(dependencies: DetailsComponentDependencies): DetailsComponent {
-            return ComponentStorage.getOrCreate(DetailsComponent::class) {
-                DaggerDetailsComponent.factory().create(dependencies)
-            } as DetailsComponent
-        }
-
-        fun destroy() {
-            ComponentStorage.remove(DetailsComponent::class)
-        }
+        fun destroy() = ComponentStorage.remove(DetailsComponent::class)
     }
 }

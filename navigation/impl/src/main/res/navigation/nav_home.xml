@@ -11,10 +11,7 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/nav_details_graph"
-            app:popUpTo="@id/homeFragment"/>
-        <action android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            app:destination="@id/nav_details_graph" />
 
     </fragment>
 
