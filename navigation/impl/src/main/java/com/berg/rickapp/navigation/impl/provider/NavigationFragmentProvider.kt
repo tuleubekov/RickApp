@@ -1,7 +1,10 @@
 package com.berg.rickapp.navigation.impl.provider
 
-import com.berg.rickapp.navigation.impl.MainFragment
+import androidx.navigation.NavController
+import com.berg.rickapp.navigation.impl.TabsFragment
 
 interface NavigationFragmentProvider {
-    fun getNavigationFragment(): MainFragment?
+    fun getNavigationFragment(): TabsFragment?
+
+    fun getRootNavController(): NavController?
 }

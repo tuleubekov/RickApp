@@ -3,8 +3,10 @@ package com.berg.rickapp.navigation.impl.di
 import androidx.navigation.NavController
 import com.berg.rickapp.navigation.api.NavigationApi
 import com.berg.rickapp.home.navigation.HomeDirections
+import com.berg.rickapp.home.navigation.HomeRouter
 import com.berg.rickapp.navigation.impl.provider.NavigationActivityProvider
 import com.berg.rickapp.navigation.impl.api.HomeNavigationImpl
+import com.berg.rickapp.navigation.impl.api.HomeRouterImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -13,17 +15,22 @@ import dagger.Provides
 class NavigationModule {
 
     @Provides
-    fun provideNavController(
+    fun provideTabsNavController(
         activityProvider: NavigationActivityProvider
-    ): NavController = activityProvider.get()
-        ?.getNavigationFragment()
-        ?.navController
-        ?: error("Do not make navigation calls while activity is not available")
+    ): NavController {
+        return activityProvider.get()
+            ?.getNavigationFragment()
+            ?.navController
+            ?: error("Do not make navigation calls while activity is not available")
+    }
 
     @Module
     interface Binder {
 
         @Binds
         fun bindHomeNavigation(impl: HomeNavigationImpl): NavigationApi<HomeDirections>
+
+        @Binds
+        fun bindHomeRouter(impl: HomeRouterImpl): HomeRouter
     }
 }

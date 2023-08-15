@@ -70,6 +70,10 @@ dependencies {
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
+    // Nav
+    implementation(Deps.Nav.navigationFragment)
+    implementation(Deps.Nav.navigationUi)
+
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)

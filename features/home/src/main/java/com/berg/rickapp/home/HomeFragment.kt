@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.berg.rickapp.core.presentation.utils.isRemovingWithParent
+import com.berg.rickapp.core.presentation.utils.observeNavigationEvent
 import com.berg.rickapp.home.di.HomeComponent
 import com.berg.rickapp.home.screen.HomeScreenRoot
 
@@ -25,9 +27,14 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeNavigationEvent(viewModel.navFlow)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        if (isRemoving && parentFragment?.isRemoving == true) {
+        if (isRemovingWithParent()) {
             HomeComponent.destroy()
         }
     }

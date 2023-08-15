@@ -15,6 +15,9 @@ class HomeNavigationImpl @Inject constructor(
             HomeDirections.ToDetails -> {
                 navController.navigate(R.id.action_homeFragment_to_detailsFragment)
             }
+            HomeDirections.ToAbout -> {
+                //--
+            }
             HomeDirections.Back -> {
                 navController.navigateUp()
             }

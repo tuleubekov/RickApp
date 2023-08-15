@@ -19,13 +19,18 @@ fun HomeScreenRoot(
     viewModel: HomeViewModel,
 ) {
     val name by viewModel.mStateCharacter.collectAsState()
-    HomeScreen(name) { viewModel.gotoDetails() }
+    HomeScreen(
+        name = name,
+        goto = { viewModel.gotoDetails() },
+        gotoAbout = { viewModel.gotoAbout() }
+    )
 }
 
 @Composable
 fun HomeScreen(
     name: String,
-    goto: () -> Unit,
+    goto: () -> Unit = {},
+    gotoAbout: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -34,7 +39,10 @@ fun HomeScreen(
     ) {
         Text(fontSize = 20.sp, text = name)
         Button(onClick = { goto() }) {
-            Text(text = "Go")
+            Text(text = "Go to Details")
+        }
+        Button(onClick = { gotoAbout() }) {
+            Text(text = "Go to About")
         }
     }
 }
@@ -42,5 +50,5 @@ fun HomeScreen(
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen("Rick") {}
+    HomeScreen("Rick")
 }

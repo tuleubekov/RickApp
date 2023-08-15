@@ -18,9 +18,19 @@ interface DetailsComponent {
 
     companion object {
 
-        fun getOrCreate(): DetailsComponent {
+        fun createAndRegister(dependencies: DetailsComponentDependencies) {
+            ComponentStorage.create(DetailsComponent::class) {
+                DaggerDetailsComponent.factory().create(dependencies)
+            }
+        }
+
+        fun get(): DetailsComponent {
+            return ComponentStorage.get(DetailsComponent::class) as DetailsComponent
+        }
+
+        fun getOrCreate(dependencies: DetailsComponentDependencies): DetailsComponent {
             return ComponentStorage.getOrCreate(DetailsComponent::class) {
-                DaggerDetailsComponent.factory().create(getDetailsDependencies())
+                DaggerDetailsComponent.factory().create(dependencies)
             } as DetailsComponent
         }
 

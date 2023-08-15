@@ -3,28 +3,37 @@ package com.berg.rickapp.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.berg.rickapp.core.common.logE
-import com.berg.rickapp.navigation.api.NavigationApi
+import com.berg.rickapp.core.presentation.nav.NavigationEvent
 import com.berg.rickapp.domain.HomeInteractor
-import com.berg.rickapp.home.navigation.HomeDirections
+import com.berg.rickapp.home.navigation.HomeRouter
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val interactor: HomeInteractor,
-    private val navigationApi: NavigationApi<HomeDirections>
+    private val router: HomeRouter,
 ) : ViewModel() {
 
     private val _mStateCharacter = MutableStateFlow("")
     val mStateCharacter: StateFlow<String> = _mStateCharacter
+
+    private val navChannel = Channel<NavigationEvent>(Channel.BUFFERED)
+    val navFlow = navChannel.receiveAsFlow()
 
     init {
         get()
     }
 
     fun gotoDetails() {
-        navigationApi.navigate(HomeDirections.ToDetails)
+        viewModelScope.launch { navChannel.send(router.navigateToDetails()) }
+    }
+
+    fun gotoAbout() {
+        viewModelScope.launch { navChannel.send(router.navigateToAbout()) }
     }
 
     private fun get() {
