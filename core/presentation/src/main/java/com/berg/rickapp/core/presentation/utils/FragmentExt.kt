@@ -1,5 +1,8 @@
 package com.berg.rickapp.core.presentation.utils
 
+import android.view.View
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -9,8 +12,22 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-fun Fragment.isRemovingWithParent(): Boolean {
-    return isRemoving || parentFragment?.isRemoving == true
+fun Fragment.isFinishing(): Boolean {
+    if (requireActivity().isFinishing) return true
+
+    var anyParentIsRemoving = false
+    var parent = parentFragment
+    while (!anyParentIsRemoving && parent != null) {
+        anyParentIsRemoving = parent.isRemoving
+        parent = parent.parentFragment
+    }
+    return isRemoving || anyParentIsRemoving
+}
+
+fun Fragment.setComposeContent(content: @Composable () -> Unit): View {
+    return ComposeView(requireContext()).apply {
+        setContent { content() }
+    }
 }
 
 fun Fragment.observeNavigationEvent(event: Flow<NavigationEvent>) {

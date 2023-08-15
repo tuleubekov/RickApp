@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.berg.rickapp.core.presentation.utils.isRemovingWithParent
+import com.berg.rickapp.core.presentation.utils.isFinishing
 import com.berg.rickapp.core.presentation.utils.observeNavigationEvent
+import com.berg.rickapp.core.presentation.utils.setComposeContent
 import com.berg.rickapp.home.di.HomeComponent
 import com.berg.rickapp.home.screen.HomeScreenRoot
 
@@ -21,11 +21,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setContent { HomeScreenRoot(viewModel) }
-        }
-    }
+    ): View = setComposeContent { HomeScreenRoot(viewModel) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,9 +30,7 @@ class HomeFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (isRemovingWithParent()) {
-            HomeComponent.destroy()
-        }
+        if (isFinishing()) HomeComponent.destroy()
     }
 
 }
