@@ -82,5 +82,4 @@ dependencies {
     implementation(project(Modules.corePresentation))
     implementation(project(Modules.Features.home))
     implementation(project(Modules.Features.details))
-    api(project(Modules.navigationApi))
 }

@@ -8,8 +8,6 @@ import com.berg.rickapp.details.di.DetailsComponentDependencies
 import com.berg.rickapp.domain.di.DomainModule
 import com.berg.rickapp.home.di.HomeComponentDependencies
 import com.berg.rickapp.navigation.impl.di.NavigationModule
-import com.berg.rickapp.navigation.impl.provider.NavigationActivityProvider
-import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
@@ -25,17 +23,10 @@ interface AppComponent : BaseAppComponent,
     DetailsComponentDependencies
 {
 
-    @Component.Factory
-    interface Factory {
-        fun create(
-            @BindsInstance activityProvider: NavigationActivityProvider
-        ): AppComponent
-    }
-
     companion object {
-        fun create(activityProvider: NavigationActivityProvider): AppComponent {
+        fun init(): AppComponent {
             return ComponentStorage.getOrCreate(BaseAppComponent::class) {
-                DaggerAppComponent.factory().create(activityProvider)
+                DaggerAppComponent.create()
             } as AppComponent
         }
     }

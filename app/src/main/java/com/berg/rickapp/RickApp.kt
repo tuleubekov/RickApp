@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.viewbinding.BuildConfig
 import com.berg.rickapp.core.common.timberDebug
 import com.berg.rickapp.di.AppComponent
-import com.berg.rickapp.navigation.impl.provider.NavigationActivityProvider
 
 class RickApp : Application() {
 
@@ -15,7 +14,7 @@ class RickApp : Application() {
     }
 
     private fun initAppComponent() {
-        AppComponent.create(NavigationActivityProvider(this))
+        AppComponent.init()
     }
 
     private fun initTimber() {
