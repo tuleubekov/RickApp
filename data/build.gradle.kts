@@ -54,6 +54,6 @@ dependencies {
     implementation(Deps.Other.kserialization)
 
     // Modules
-    implementation(project(Modules.coreCommon))
+    implementation(project(Modules.Common.utils))
     implementation(project(Modules.domain))
 }

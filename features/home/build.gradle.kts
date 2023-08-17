@@ -10,7 +10,7 @@ repositories {
 }
 
 android {
-    namespace = "com.berg.rickapp.home"
+    namespace = "com.berg.rickapp.features.home"
     compileSdk = 33
 
     defaultConfig {
@@ -87,7 +87,10 @@ dependencies {
     androidTestImplementation(Deps.Test.espressoCore)
 
     // Modules
-    implementation(project(Modules.corePresentation))
+    implementation(project(Modules.Common.ui))
+    implementation(project(Modules.Common.utils))
+    implementation(project(Modules.Core.di))
+    implementation(project(Modules.Core.navApi))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
 }

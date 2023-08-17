@@ -10,7 +10,7 @@ repositories {
 }
 
 android {
-    namespace = "com.berg.rickapp.details"
+    namespace = "com.berg.rickapp.features.details"
     compileSdk = 33
 
     defaultConfig {
@@ -75,7 +75,15 @@ dependencies {
     implementation(Deps.Other.viewBindingDelegate)
 
     // Modules
-    implementation(project(Modules.corePresentation))
+    implementation(project(Modules.Common.ui))
+    implementation(project(Modules.Common.utils))
+    implementation(project(Modules.Core.di))
+    implementation(project(Modules.Core.navApi))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
+
+    // Tests
+    testImplementation(Deps.Test.junit)
+    androidTestImplementation(Deps.Test.extJunit)
+    androidTestImplementation(Deps.Test.espressoCore)
 }

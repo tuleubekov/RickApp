@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/tabsFragment"
+    android:id="@+id/nav_app_graph">
+
+    <fragment
+        android:id="@+id/tabsFragment"
+        android:name="com.berg.rickapp.core.navigation.impl.TabsFragment"
+        android:label="fragment_tabs"
+        tools:layout="@layout/fragment_tabs">
+        <action android:id="@+id/action_tabsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.berg.rickapp.core.navigation.impl.temp.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+
+</navigation>

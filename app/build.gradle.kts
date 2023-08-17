@@ -78,10 +78,11 @@ dependencies {
     androidTestImplementation(Deps.Test.espressoCore)
 
     // Modules
-    implementation(project(Modules.corePresentation))
+    implementation(project(Modules.Common.utils))
+    implementation(project(Modules.Core.di))
+    implementation(project(Modules.Core.navImpl))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
-    implementation(project(Modules.navigationImpl))
     implementation(project(Modules.Features.home))
     implementation(project(Modules.Features.details))
 }
