@@ -1,6 +1,12 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+}
+
+repositories {
+    google()
+    mavenCentral()
 }
 
 android {
@@ -31,14 +37,59 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Deps.Compose.versionCompose
+    }
 }
 
 dependencies {
+    // Core Android dependencies
+    implementation(Deps.Core.androidxCoreKtx)
+    implementation(Deps.Core.fragmentKtx)
+    implementation(Deps.Core.appCompat)
+    implementation(Deps.Core.constraint)
+    implementation(Deps.Core.material)
+    implementation(Deps.Core.splashScreen)
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // Compose
+    val composeBom = platform(Deps.Compose.composeBom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    implementation(Deps.Compose.runtime)
+    implementation(Deps.Compose.ui)
+    implementation(Deps.Compose.foundation)
+    implementation(Deps.Compose.foundationLayout)
+    implementation(Deps.Compose.material)
+    implementation(Deps.Compose.runtimeLivedata)
+    implementation(Deps.Compose.viewModelCompose)
+    implementation(Deps.Compose.toolingPreview)
+    debugImplementation(Deps.Compose.uiTooling)
+    implementation(Deps.Compose.accomponistThemeAdapterMaterial)
+
+    // Nav
+    implementation(Deps.Nav.navigationFragment)
+    implementation(Deps.Nav.navigationUi)
+
+    // Di
+    implementation(Deps.Di.dagger)
+    kapt(Deps.Di.daggerCompiler)
+
+    // Other
+    implementation(Deps.Other.viewBindingDelegate)
+
+    // Tests
+    testImplementation(Deps.Test.junit)
+    androidTestImplementation(Deps.Test.extJunit)
+    androidTestImplementation(Deps.Test.espressoCore)
+
+    // Modules
+    implementation(project(Modules.Common.ui))
+    implementation(project(Modules.Common.utils))
+    implementation(project(Modules.Core.di))
+    implementation(project(Modules.Core.navApi))
 }

@@ -83,6 +83,7 @@ dependencies {
     implementation(project(Modules.Core.navImpl))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
+    implementation(project(Modules.Features.splash))
     implementation(project(Modules.Features.home))
     implementation(project(Modules.Features.details))
 }

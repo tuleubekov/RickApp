@@ -4,17 +4,19 @@ import android.app.Application
 import androidx.viewbinding.BuildConfig
 import com.berg.rickapp.common.utils.timberDebug
 import com.berg.rickapp.di.AppComponent
+import com.berg.rickapp.features.splash.di.SplashComponent
 
 class RickApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
         initTimber()
-        initAppComponent()
+        initComponents()
     }
 
-    private fun initAppComponent() {
+    private fun initComponents() {
         AppComponent.init()
+        SplashComponent.init()
     }
 
     private fun initTimber() {

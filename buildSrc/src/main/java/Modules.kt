@@ -15,6 +15,7 @@ object Modules {
     }
 
     object Features {
+        const val splash = ":features:splash"
         const val home = ":features:home"
         const val details = ":features:details"
     }

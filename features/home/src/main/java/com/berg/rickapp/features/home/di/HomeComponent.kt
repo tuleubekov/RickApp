@@ -22,6 +22,12 @@ interface HomeComponent {
             DaggerHomeComponent.factory().create(getHomeDependencies())
         }
 
+        fun init(dep: HomeComponentDependencies) = ComponentStorage.create(HomeComponent::class) {
+            DaggerHomeComponent.factory().create(dep)
+        }
+
+        fun get() = ComponentStorage.get(HomeComponent::class)
+
         fun destroy() = ComponentStorage.remove(HomeComponent::class)
     }
 }

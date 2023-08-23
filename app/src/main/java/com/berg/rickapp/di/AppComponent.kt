@@ -8,6 +8,7 @@ import com.berg.rickapp.core.di.ComponentStorage
 import com.berg.rickapp.domain.di.DomainModule
 import com.berg.rickapp.features.home.di.HomeComponentDependencies
 import com.berg.rickapp.core.navigation.impl.di.NavigationModule
+import com.berg.rickapp.features.splash.di.SplashComponentDependencies
 import dagger.Component
 import javax.inject.Singleton
 
@@ -19,15 +20,14 @@ import javax.inject.Singleton
     DomainModule::class,
 ])
 interface AppComponent : BaseAppComponent,
+    SplashComponentDependencies,
     HomeComponentDependencies,
     DetailsComponentDependencies
 {
 
     companion object {
-        fun init(): AppComponent {
-            return ComponentStorage.getOrCreate(BaseAppComponent::class) {
-                DaggerAppComponent.create()
-            } as AppComponent
+        fun init() = ComponentStorage.getOrCreate(BaseAppComponent::class) {
+            DaggerAppComponent.create() as AppComponent
         }
     }
 }

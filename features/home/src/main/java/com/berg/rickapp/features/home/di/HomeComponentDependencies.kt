@@ -7,7 +7,7 @@ import com.berg.rickapp.features.home.router.HomeRouter
 
 interface HomeComponentDependencies {
     fun getHomeInteractor(): HomeInteractor
-    fun getRouter(): HomeRouter
+    fun getHomeRouter(): HomeRouter
 }
 
 fun Any.getHomeDependencies(): HomeComponentDependencies {
