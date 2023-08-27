@@ -6,23 +6,19 @@ import com.berg.rickapp.core.di.ScreenScope
 import dagger.Component
 
 @ScreenScope
-@Component(dependencies = [HomeComponentDependencies::class], modules = [HomeDataModule::class])
+@Component(dependencies = [HomeFeatureDependencies::class], modules = [HomeFeatureModule::class])
 interface HomeComponent {
 
     fun getViewModelFactory(): AppViewModelFactory
 
     @Component.Factory
     interface Factory {
-        fun create(dependencies: HomeComponentDependencies): HomeComponent
+        fun create(dependencies: HomeFeatureDependencies): HomeComponent
     }
 
     companion object {
 
-        fun getOrCreate(): HomeComponent = ComponentStorage.getOrCreate(HomeComponent::class) {
-            DaggerHomeComponent.factory().create(getHomeDependencies())
-        }
-
-        fun init(dep: HomeComponentDependencies) = ComponentStorage.create(HomeComponent::class) {
+        fun init(dep: HomeFeatureDependencies) = ComponentStorage.create(HomeComponent::class) {
             DaggerHomeComponent.factory().create(dep)
         }
 

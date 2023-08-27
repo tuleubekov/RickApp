@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.berg.rickapp.common.ui.isFinishing
 import com.berg.rickapp.common.utils.logE
 import com.berg.rickapp.features.details.databinding.FragmentDetailsBinding
 import com.berg.rickapp.features.details.di.DetailsComponent

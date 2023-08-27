@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-interface HomeDataModule {
+interface HomeFeatureModule {
 
     @Binds
     @IntoMap
