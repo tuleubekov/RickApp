@@ -9,7 +9,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class FeatureGlueModule {
+class FeatureDependenciesModule {
 
     @Singleton
     @Provides

@@ -1,8 +1,11 @@
 package com.berg.rickapp.di
 
-import com.berg.rickapp.core.di.FeatureInjector
+import com.berg.rickapp.core.di.Injector
+import com.berg.rickapp.di.injectors.DetailsFeatureInjector
+import com.berg.rickapp.di.injectors.HomeFeatureInjector
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -10,5 +13,11 @@ interface FeatureInjectorModule {
 
     @Binds
     @Singleton
-    fun bindFeatureInjectorModule(impl: FeatureInjectorImpl): FeatureInjector
+    @Named("home")
+    fun bindHomeInjector(impl: HomeFeatureInjector): Injector
+
+    @Binds
+    @Singleton
+    @Named("details")
+    fun bindDetailsInjector(impl: DetailsFeatureInjector): Injector
 }

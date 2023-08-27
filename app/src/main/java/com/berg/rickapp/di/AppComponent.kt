@@ -15,7 +15,7 @@ import javax.inject.Singleton
     NavigationModule::class,
     DataModule::class,
     DomainModule::class,
-    FeatureGlueModule::class,
+    FeatureDependenciesModule::class,
     FeatureInjectorModule::class,
 ])
 interface AppComponent : SplashFeatureDependencies {
