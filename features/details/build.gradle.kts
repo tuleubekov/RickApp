@@ -79,6 +79,7 @@ dependencies {
     implementation(project(Modules.Common.utils))
     implementation(project(Modules.Core.di))
     implementation(project(Modules.Core.navApi))
+    implementation(project(Modules.Core.presentation))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
 

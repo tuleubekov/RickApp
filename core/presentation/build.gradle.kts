@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
 }
 
 repositories {
@@ -10,7 +9,7 @@ repositories {
 }
 
 android {
-    namespace = "com.berg.rickapp.features.home"
+    namespace = "com.berg.rickapp.core.presentation"
     compileSdk = 33
 
     defaultConfig {
@@ -47,12 +46,14 @@ android {
 }
 
 dependencies {
-    // Core Android dependencies
+    // Core
     implementation(Deps.Core.androidxCoreKtx)
-    implementation(Deps.Core.fragmentKtx)
     implementation(Deps.Core.appCompat)
-    implementation(Deps.Core.constraint)
-    implementation(Deps.Core.material)
+    implementation(Deps.Other.timber)
+
+    // Nav
+    implementation(Deps.Nav.navigationFragment)
+    implementation(Deps.Nav.navigationUi)
 
     // Compose
     val composeBom = platform(Deps.Compose.composeBom)
@@ -65,33 +66,16 @@ dependencies {
     implementation(Deps.Compose.foundationLayout)
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.runtimeLivedata)
-    implementation(Deps.Compose.viewModelCompose)
     implementation(Deps.Compose.toolingPreview)
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
-    // Nav
-    implementation(Deps.Nav.navigationFragment)
-    implementation(Deps.Nav.navigationUi)
-
-    // Di
-    implementation(Deps.Di.dagger)
-    kapt(Deps.Di.daggerCompiler)
-
-    // Other
-    implementation(Deps.Other.viewBindingDelegate)
+    // Modules
+    implementation(project(Modules.Common.ui))
+    implementation(project(Modules.Core.navApi))
 
     // Tests
     testImplementation(Deps.Test.junit)
     androidTestImplementation(Deps.Test.extJunit)
     androidTestImplementation(Deps.Test.espressoCore)
-
-    // Modules
-    implementation(project(Modules.Common.ui))
-    implementation(project(Modules.Common.utils))
-    implementation(project(Modules.Core.di))
-    implementation(project(Modules.Core.navApi))
-    implementation(project(Modules.Core.presentation))
-    implementation(project(Modules.data))
-    implementation(project(Modules.domain))
 }

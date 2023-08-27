@@ -12,15 +12,15 @@ class HomeRouterImpl @Inject constructor(
     @Named("details") private val injector: Provider<Injector>,
 ) : HomeRouter {
 
-    override fun navigateToDetails(): NavigationEvent {
+    override fun navigateToDetails(): com.berg.rickapp.core.navigation.api.NavigationEvent {
         injector.get().initComponent()
-        return NavigationEvent.Forward(
+        return com.berg.rickapp.core.navigation.api.NavigationEvent.Forward(
             hostId = R.id.tabs_host_fragment,
             id = R.id.action_homeFragment_to_detailsFragment
         )
     }
 
-    override fun navigateToAbout() = NavigationEvent.Forward(
+    override fun navigateToAbout() = com.berg.rickapp.core.navigation.api.NavigationEvent.Forward(
         hostId = R.id.root_nav_host,
         id = R.id.action_tabsFragment_to_aboutFragment
     )

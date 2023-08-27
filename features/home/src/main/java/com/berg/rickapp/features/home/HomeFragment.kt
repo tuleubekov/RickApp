@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeNavigationEvent(viewModel.navFlow)
+        observeNavigationEvent(viewModel.navigationFlow)
     }
 
     override fun onDestroy() {

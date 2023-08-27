@@ -12,6 +12,7 @@ object Modules {
         const val network = ":core:network"
         const val navApi = ":core:navigation:api"
         const val navImpl = ":core:navigation:impl"
+        const val presentation = ":core:presentation"
     }
 
     object Features {

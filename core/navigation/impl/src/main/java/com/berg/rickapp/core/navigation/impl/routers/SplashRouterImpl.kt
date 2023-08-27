@@ -12,9 +12,9 @@ class SplashRouterImpl @Inject constructor(
     @Named("home") private val injector: Provider<Injector>,
 ) : SplashRouter {
 
-    override fun navigateToTabsFragment(): NavigationEvent {
+    override fun navigateToTabsFragment(): com.berg.rickapp.core.navigation.api.NavigationEvent {
         injector.get().initComponent()
-        return NavigationEvent.Forward(
+        return com.berg.rickapp.core.navigation.api.NavigationEvent.Forward(
             hostId = R.id.root_nav_host,
             id = R.id.action_splashFragment_to_tabsFragment,
         )
