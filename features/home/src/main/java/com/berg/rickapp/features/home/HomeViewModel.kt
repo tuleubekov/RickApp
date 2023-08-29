@@ -38,7 +38,6 @@ class HomeViewModel @Inject constructor(
                 interactor.getCharacter("https://rickandmortyapi.com/api/character/2")
             }
                 .onSuccess {
-                    logE("success= $it")
                     _mStateCharacter.value = it.name
                 }
                 .onFailure { logE("fail= $it") }

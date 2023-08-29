@@ -71,6 +71,7 @@ dependencies {
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
     // Modules
+    implementation(project(Modules.Common.utils))
     implementation(project(Modules.Common.ui))
     implementation(project(Modules.Core.navApi))
 

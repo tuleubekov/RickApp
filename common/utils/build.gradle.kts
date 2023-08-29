@@ -40,8 +40,7 @@ android {
 
 dependencies {
 
-    implementation(Deps.Other.timber)
-
+    api(Deps.Other.timber)
 
     // Tests
     testImplementation(Deps.Test.junit)

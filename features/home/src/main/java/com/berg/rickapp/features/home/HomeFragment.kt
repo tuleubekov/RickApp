@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.berg.rickapp.common.ui.isFinishing
 import com.berg.rickapp.common.ui.observeNavigationEvent
 import com.berg.rickapp.common.ui.setComposeContent
+import com.berg.rickapp.core.presentation.base.BaseFragment
 import com.berg.rickapp.features.home.di.HomeComponent
 import com.berg.rickapp.features.home.screen.HomeScreenRoot
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private val component by lazy { HomeComponent.get() }
     private val viewModel by viewModels<HomeViewModel> { component.getViewModelFactory() }
@@ -28,9 +27,8 @@ class HomeFragment : Fragment() {
         observeNavigationEvent(viewModel.navigationFlow)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        if (isFinishing()) HomeComponent.destroy()
+    override fun onFullDestroy() {
+        HomeComponent.destroy()
     }
 
 }
