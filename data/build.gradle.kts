@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation(Deps.Core.paging)
     // Network
     implementation(Deps.Network.retrofit)
     implementation(Deps.Network.retrofitConverterKSerilization)

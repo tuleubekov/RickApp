@@ -2,13 +2,16 @@ package com.berg.rickapp.features.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.berg.rickapp.common.utils.logE
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.berg.rickapp.core.navigation.api.NavigationFlow
 import com.berg.rickapp.core.presentation.NavFlowImpl
 import com.berg.rickapp.domain.HomeInteractor
+import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.features.home.router.HomeRouter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,11 +20,15 @@ class HomeViewModel @Inject constructor(
     private val router: HomeRouter,
 ) : ViewModel(), NavigationFlow by NavFlowImpl() {
 
-    private val _mStateCharacter = MutableStateFlow("")
-    val mStateCharacter: StateFlow<String> = _mStateCharacter
+    private val _statePagerCharacters = MutableStateFlow(PagingData.empty<Character>())
+    val statePagerCharacters: StateFlow<PagingData<Character>> = _statePagerCharacters
 
     init {
-        get()
+        getPager()
+    }
+
+    fun retry() {
+        getPager()
     }
 
     fun gotoDetails() {
@@ -32,15 +39,14 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch { sendNavEvent(router.navigateToAbout()) }
     }
 
-    private fun get() {
+    private fun getPager() {
         viewModelScope.launch {
-            kotlin.runCatching {
-                interactor.getCharacter("https://rickandmortyapi.com/api/character/2")
-            }
-                .onSuccess {
-                    _mStateCharacter.value = it.name
+            interactor.getCharacters()
+                .distinctUntilChanged()
+                .cachedIn(viewModelScope)
+                .collect {
+                    _statePagerCharacters.value = it
                 }
-                .onFailure { logE("fail= $it") }
         }
     }
 }

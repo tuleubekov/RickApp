@@ -70,6 +70,9 @@ dependencies {
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
+    implementation(Deps.Core.paging)
+    implementation(Deps.Compose.paging)
+
     // Nav
     implementation(Deps.Nav.navigationFragment)
     implementation(Deps.Nav.navigationUi)

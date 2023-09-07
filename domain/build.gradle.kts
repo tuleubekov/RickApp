@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(Deps.Core.paging)
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)

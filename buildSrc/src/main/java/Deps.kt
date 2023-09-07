@@ -6,6 +6,7 @@ object Deps {
         private const val versionAppCompat = "1.6.1"
         private const val versionMaterial = "1.9.0"
         private const val versionConstraint = "2.1.4"
+        private const val versionPaging = "3.1.1"
         private const val versionSplash = "1.0.1"
 
         const val androidxCoreKtx = "androidx.core:core-ktx:$versionCoreKtx"
@@ -13,6 +14,7 @@ object Deps {
         const val appCompat = "androidx.appcompat:appcompat:$versionAppCompat"
         const val material = "com.google.android.material:material:$versionMaterial"
         const val constraint = "androidx.constraintlayout:constraintlayout:$versionConstraint"
+        const val paging = "androidx.paging:paging-runtime:$versionPaging"
         const val splashScreen = "androidx.core:core-splashscreen:$versionSplash"
     }
 
@@ -20,6 +22,7 @@ object Deps {
         private const val versionComposeBom = "2023.05.01"
         private const val versionViewModelCompose = "2.5.1"
         private const val versionAccomponistMaterial = "0.30.1"
+        private const val versionPaging = "3.2.0"
         const val versionCompose = "1.4.0"
 
         const val composeBom = "androidx.compose:compose-bom:$versionComposeBom"
@@ -35,6 +38,7 @@ object Deps {
             "androidx.lifecycle:lifecycle-viewmodel-compose:$versionViewModelCompose"
         const val accomponistThemeAdapterMaterial =
             "com.google.accompanist:accompanist-themeadapter-material:$versionAccomponistMaterial"
+        const val paging = "androidx.paging:paging-compose:$versionPaging"
     }
 
     object Nav {

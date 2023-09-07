@@ -14,13 +14,13 @@ class DefaultCharactersMapper : CharactersMapper {
 
     override fun map(input: CharacterListDto): CharacterList {
         return CharacterList(
-            info = CharacterListInfo(
+            pageInfo = CharacterListInfo(
                 count = input.info?.count ?: 0,
                 pages = input.info?.pages ?: 0,
                 next = input.info?.next ?: "",
                 prev = input.info?.prev ?: ""
             ),
-            results = input.results?.map(::mapToCharacter) ?: emptyList()
+            characters = input.results?.map(::mapToCharacter) ?: emptyList()
         )
     }
 

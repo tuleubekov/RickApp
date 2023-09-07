@@ -16,8 +16,8 @@ data class Character(
 )
 
 data class CharacterList(
-    val info: CharacterListInfo,
-    val results: List<Character>,
+    val pageInfo: CharacterListInfo,
+    val characters: List<Character>,
 )
 
 data class CharacterListInfo(
