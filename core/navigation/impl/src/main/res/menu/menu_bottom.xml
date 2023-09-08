@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@id/nav_home_graph"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/selector_home"
         android:title="Home"/>
     <item
         android:id="@+id/locationsFragment"
-        android:icon="@drawable/ic_settings"
-        android:title="Settings" />
+        android:icon="@drawable/selector_settings"
+        android:title="Favorites" />
 </menu>
