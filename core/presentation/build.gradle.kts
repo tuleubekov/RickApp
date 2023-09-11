@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 repositories {
@@ -69,6 +70,9 @@ dependencies {
     implementation(Deps.Compose.toolingPreview)
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
+
+    implementation(Deps.Di.dagger)
+    kapt(Deps.Di.daggerCompiler)
 
     // Modules
     implementation(project(Modules.Common.utils))

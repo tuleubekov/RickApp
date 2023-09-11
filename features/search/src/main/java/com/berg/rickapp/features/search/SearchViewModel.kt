@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.berg.rickapp.core.navigation.api.NavFlowImpl
 import com.berg.rickapp.core.navigation.api.NavigationFlow
-import com.berg.rickapp.core.presentation.NavFlowImpl
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.domain.model.Character
 import kotlinx.coroutines.flow.MutableStateFlow

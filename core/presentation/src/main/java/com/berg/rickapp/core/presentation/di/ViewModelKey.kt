@@ -1,4 +1,4 @@
-package com.berg.rickapp.core.di
+package com.berg.rickapp.core.presentation.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

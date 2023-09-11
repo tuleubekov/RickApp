@@ -1,7 +1,7 @@
 package com.berg.rickapp.features.splash.di
 
 import androidx.lifecycle.ViewModel
-import com.berg.rickapp.core.di.ViewModelKey
+import com.berg.rickapp.core.presentation.di.ViewModelKey
 import com.berg.rickapp.features.splash.SplashViewModel
 import dagger.Binds
 import dagger.Module

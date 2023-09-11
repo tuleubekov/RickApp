@@ -23,7 +23,7 @@ class SearchFragment : BaseFragment() {
     }
 
     override fun onFullDestroy() {
-        SearchComponent.get()
+        SearchComponent.destroy()
     }
 
 }

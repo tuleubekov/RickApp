@@ -1,6 +1,6 @@
 package com.berg.rickapp.features.splash.di
 
-import com.berg.rickapp.core.di.AppViewModelFactory
+import com.berg.rickapp.core.presentation.di.AppViewModelFactory
 import com.berg.rickapp.core.di.ComponentStorage
 import dagger.Component
 

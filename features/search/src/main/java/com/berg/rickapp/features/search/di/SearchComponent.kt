@@ -1,6 +1,6 @@
 package com.berg.rickapp.features.search.di
 
-import com.berg.rickapp.core.di.AppViewModelFactory
+import com.berg.rickapp.core.presentation.di.AppViewModelFactory
 import com.berg.rickapp.core.di.ComponentStorage
 import com.berg.rickapp.features.search.api.SearchFeatureApi
 import dagger.Component
