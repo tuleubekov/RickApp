@@ -10,7 +10,7 @@ repositories {
 }
 
 android {
-    namespace = "com.berg.rickapp.core.navigation.impl"
+    namespace = "com.berg.rickapp.features.search"
     compileSdk = 33
 
     defaultConfig {
@@ -47,16 +47,12 @@ android {
 }
 
 dependencies {
-    // Core
+    // Core Android dependencies
     implementation(Deps.Core.androidxCoreKtx)
     implementation(Deps.Core.fragmentKtx)
     implementation(Deps.Core.appCompat)
     implementation(Deps.Core.constraint)
     implementation(Deps.Core.material)
-
-    // Nav
-    implementation(Deps.Nav.navigationFragment)
-    implementation(Deps.Nav.navigationUi)
 
     // Compose
     val composeBom = platform(Deps.Compose.composeBom)
@@ -74,24 +70,31 @@ dependencies {
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
+    implementation(Deps.Core.paging)
+    implementation(Deps.Compose.paging)
+
+    // Nav
+    implementation(Deps.Nav.navigationFragment)
+    implementation(Deps.Nav.navigationUi)
+
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
 
+    // Other
     implementation(Deps.Other.viewBindingDelegate)
+
+    // Tests
+    testImplementation(Deps.Test.junit)
+    androidTestImplementation(Deps.Test.extJunit)
+    androidTestImplementation(Deps.Test.espressoCore)
 
     // Modules
     implementation(project(Modules.Common.ui))
     implementation(project(Modules.Common.utils))
     implementation(project(Modules.Core.di))
     implementation(project(Modules.Core.navApi))
-    implementation(project(Modules.Features.splash))
-    implementation(project(Modules.Features.home))
-    implementation(project(Modules.Features.details))
-    implementation(project(Modules.Features.search))
-
-    // Tests
-    testImplementation(Deps.Test.junit)
-    androidTestImplementation(Deps.Test.extJunit)
-    androidTestImplementation(Deps.Test.espressoCore)
+    implementation(project(Modules.Core.presentation))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
 }

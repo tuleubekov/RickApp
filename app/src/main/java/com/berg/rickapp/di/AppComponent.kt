@@ -5,6 +5,7 @@ import com.berg.rickapp.core.navigation.impl.di.NavigationModule
 import com.berg.rickapp.data.di.DataModule
 import com.berg.rickapp.data.di.NetworkModule
 import com.berg.rickapp.domain.di.DomainModule
+import com.berg.rickapp.features.search.di.SearchFeatureDependencies
 import com.berg.rickapp.features.splash.di.SplashFeatureDependencies
 import dagger.Component
 import javax.inject.Singleton
@@ -18,7 +19,7 @@ import javax.inject.Singleton
     FeatureDependenciesModule::class,
     FeatureInjectorModule::class,
 ])
-interface AppComponent : SplashFeatureDependencies {
+interface AppComponent : SplashFeatureDependencies, SearchFeatureDependencies {
 
     companion object {
 
@@ -26,6 +27,7 @@ interface AppComponent : SplashFeatureDependencies {
             val appComponent = DaggerAppComponent.create()
             ComponentStorage.create(AppComponent::class) { appComponent }
             ComponentStorage.create(SplashFeatureDependencies::class) { appComponent }
+            ComponentStorage.create(SearchFeatureDependencies::class) { appComponent }
         }
     }
 }

@@ -86,4 +86,5 @@ dependencies {
     implementation(project(Modules.Features.splash))
     implementation(project(Modules.Features.home))
     implementation(project(Modules.Features.details))
+    implementation(project(Modules.Features.search))
 }

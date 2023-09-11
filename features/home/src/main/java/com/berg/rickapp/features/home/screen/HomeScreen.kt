@@ -1,7 +1,9 @@
 package com.berg.rickapp.features.home.screen
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -39,38 +41,8 @@ fun HomeScreen(
     items: LazyPagingItems<Character>,
     retry: () -> Unit = {},
 ) {
-    LazyColumn {
-        items(items.itemCount) { idx -> CharacterItem(itemEntity = items[idx]) }
-        items.apply {
-            when {
-                loadState.refresh is LoadState.Loading -> {
-                    item { PageLoader(modifier = Modifier.fillParentMaxSize()) }
-                }
-                loadState.refresh is LoadState.Error -> {
-                    val error = items.loadState.refresh as LoadState.Error
-                    item {
-                        ErrorMessage(
-                            message = error.error.message ?: "Error",
-                            modifier = Modifier.fillParentMaxSize(),
-                            onClickRetry = { retry.invoke() }
-                        )
-                    }
-                }
-                loadState.append is LoadState.Loading -> {
-                    item { LoadingNextPageItem(modifier = Modifier) }
-                }
-                loadState.append is LoadState.Error -> {
-                    val error = items.loadState.refresh as LoadState.Error
-                    item {
-                        ErrorMessage(
-                            message = error.error.message ?: "Error",
-                            modifier = Modifier.fillParentMaxSize(),
-                            onClickRetry = { retry.invoke() }
-                        )
-                    }
-                }
-            }
-        }
+    Column(modifier = Modifier.fillMaxSize()) {
+        Text(text = "HOME FRAGMENT")
     }
 }
 
