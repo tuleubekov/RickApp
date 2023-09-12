@@ -19,8 +19,8 @@ class RemoteDataSourceImpl @Inject constructor(
     private val api: RickApi,
 ): RemoteDataSource {
 
-    private val listMapper: CharactersMapper = DefaultCharactersMapper()
     private val mapper: CharacterMapper = DefaultCharacterMapper()
+    private val listMapper: CharactersMapper = DefaultCharactersMapper()
 
     override suspend fun getCharacters(page: Int): CharacterList {
         return api.getCharacters(page).let(listMapper::map)

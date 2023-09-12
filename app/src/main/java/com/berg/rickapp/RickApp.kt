@@ -1,7 +1,6 @@
 package com.berg.rickapp
 
 import android.app.Application
-import androidx.viewbinding.BuildConfig
 import com.berg.rickapp.common.utils.timberDebug
 import com.berg.rickapp.di.AppComponent
 

@@ -7,12 +7,24 @@ import com.berg.rickapp.features.home.router.HomeRouter
 import com.berg.rickapp.features.search.api.SearchFeatureApi
 import com.berg.rickapp.features.search.di.SearchComponent
 import com.berg.rickapp.features.search.di.SearchFeatureDependencies
+import com.berg.rickapp.features.splash.di.SplashFeatureDependencies
+import com.berg.rickapp.features.splash.router.SplashRouter
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
 class FeatureDependenciesModule {
+
+    @Singleton
+    @Provides
+    fun provideSplashFeatureDependencies(
+        splashRouter: SplashRouter,
+    ): SplashFeatureDependencies {
+        return object : SplashFeatureDependencies {
+            override fun getSplashRouter(): SplashRouter = splashRouter
+        }
+    }
 
     @Singleton
     @Provides

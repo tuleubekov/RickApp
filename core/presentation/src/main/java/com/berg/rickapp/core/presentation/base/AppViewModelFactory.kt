@@ -1,4 +1,4 @@
-package com.berg.rickapp.core.presentation.di
+package com.berg.rickapp.core.presentation.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

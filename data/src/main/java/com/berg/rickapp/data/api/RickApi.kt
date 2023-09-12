@@ -8,7 +8,7 @@ import retrofit2.http.Url
 
 interface RickApi {
 
-    @GET("character")
+    @GET("characters")
     suspend fun getCharacters(@Query("page") page: Int): CharacterListDto
 
     @GET

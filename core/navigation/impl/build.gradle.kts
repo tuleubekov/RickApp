@@ -77,6 +77,9 @@ dependencies {
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
+    implementation(Deps.Di.daggerAndroid)
+    implementation(Deps.Di.daggerAndroidS)
+    kapt(Deps.Di.daggerAndroidAP)
 
     implementation(Deps.Other.viewBindingDelegate)
 

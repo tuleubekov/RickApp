@@ -10,6 +10,7 @@ class DetailsFeatureInjector @Inject constructor(
 ) : Injector {
 
     override fun initComponent() {
+        //
         DetailsComponent.init(detailsFeatureDependencies)
     }
 }
