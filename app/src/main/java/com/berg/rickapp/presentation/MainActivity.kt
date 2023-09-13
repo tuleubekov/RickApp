@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.berg.rickapp.databinding.ActivityMainBinding
 import com.berg.rickapp.di.AppComponent
-import javax.inject.Inject
 
-class MainActivity @Inject constructor() : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val component by lazy { AppComponent.get() }

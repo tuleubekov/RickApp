@@ -11,10 +11,8 @@ import com.berg.rickapp.core.presentation.base.BaseFragment
 import com.berg.rickapp.features.details.databinding.FragmentDetailsBinding
 import com.berg.rickapp.features.details.di.DetailsComponent
 import com.berg.rickapp.features.details.screen.DetailsScreenRoot
-import javax.inject.Inject
 
-class DetailsFragment @Inject constructor() : BaseFragment() {
-
+class DetailsFragment : BaseFragment() {
     private val binding by viewBinding(FragmentDetailsBinding::bind)
     private val component by lazy { DetailsComponent.get() }
     private val viewModel by viewModels<DetailsViewModel> { component.getViewModelFactory() }
