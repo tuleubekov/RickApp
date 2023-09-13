@@ -20,19 +20,13 @@ interface SearchComponent : SearchFeatureApi {
 
     companion object {
 
-        fun init(dep: SearchFeatureDependencies) {
-//            ComponentStorage.getOrCreate(SearchComponent::class) {
-//                SearchDaggerComponent.factory().create(getSearchDependencies())
-//            }
-        }
+        fun init(dep: SearchFeatureDependencies) =
+            ComponentStorage.getOrCreate(SearchComponent::class) {
+                DaggerSearchComponent.factory().create(dep)
+            }
 
-        fun get() = ComponentStorage.getOrCreate(SearchComponent::class) {
-            DaggerSearchComponent.factory().create(getSearchDependencies())
-        }
+        fun get() = ComponentStorage.get(SearchComponent::class)
 
         fun destroy() = ComponentStorage.remove(SearchComponent::class)
     }
 }
-
-fun Any.getSearchDependencies(): SearchFeatureDependencies =
-    ComponentStorage.get(SearchFeatureDependencies::class)

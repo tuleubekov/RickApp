@@ -15,11 +15,6 @@ interface SplashComponent {
     }
 
     companion object {
-
-        fun initAndGet() = ComponentStorage.getOrCreate(SplashComponent::class) {
-            DaggerSplashComponent.factory().create(getSplashDependencies())
-        }
-
         fun init(dependencies: SplashFeatureDependencies) =
             ComponentStorage.create(SplashComponent::class) {
                 DaggerSplashComponent.factory().create(dependencies)

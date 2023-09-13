@@ -71,9 +71,6 @@ dependencies {
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
-    implementation(Deps.Di.daggerAndroid)
-    implementation(Deps.Di.daggerAndroidS)
-    kapt(Deps.Di.daggerAndroidAP)
 
     // Tests
     testImplementation(Deps.Test.junit)
@@ -86,6 +83,7 @@ dependencies {
     implementation(project(Modules.Core.navImpl))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
+    implementation(project(Modules.Core.presentation))
     implementation(project(Modules.Features.splash))
     implementation(project(Modules.Features.home))
     implementation(project(Modules.Features.details))

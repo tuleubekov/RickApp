@@ -4,8 +4,6 @@ import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.features.details.di.DetailsFeatureDependencies
 import com.berg.rickapp.features.home.di.HomeFeatureDependencies
 import com.berg.rickapp.features.home.router.HomeRouter
-import com.berg.rickapp.features.search.api.SearchFeatureApi
-import com.berg.rickapp.features.search.di.SearchComponent
 import com.berg.rickapp.features.search.di.SearchFeatureDependencies
 import com.berg.rickapp.features.splash.di.SplashFeatureDependencies
 import com.berg.rickapp.features.splash.router.SplashRouter
@@ -57,12 +55,5 @@ class FeatureDependenciesModule {
             override fun getHomeInteractor(): HomeInteractor = homeInteractor
         }
     }
-
-    @Provides
-    fun provideSearchFeatureApi(dependencies: SearchFeatureDependencies): SearchFeatureApi {
-        SearchComponent.init(dependencies)
-        return SearchComponent.get()
-    }
-
 
 }

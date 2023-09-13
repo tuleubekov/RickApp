@@ -7,21 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.berg.rickapp.common.ui.observeNavigationEvent
 import com.berg.rickapp.common.ui.setComposeContent
-import com.berg.rickapp.common.utils.logE
 import com.berg.rickapp.core.presentation.base.BaseFragment
 import com.berg.rickapp.features.home.di.HomeComponent
 import com.berg.rickapp.features.home.screen.HomeScreenRoot
+import javax.inject.Inject
 
-class HomeFragment : BaseFragment() {
+class HomeFragment @Inject constructor() : BaseFragment() {
 
     private val component by lazy { HomeComponent.get() }
     private val viewModel by viewModels<HomeViewModel> { component.getViewModelFactory() }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        logE("HomeFragment pre onCreate")
-        super.onCreate(savedInstanceState)
-        logE("HomeFragment onCreated")
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,5 +31,4 @@ class HomeFragment : BaseFragment() {
     override fun onFullDestroy() {
         HomeComponent.destroy()
     }
-
 }

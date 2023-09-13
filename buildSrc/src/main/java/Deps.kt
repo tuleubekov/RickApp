@@ -62,9 +62,6 @@ object Deps {
         private const val versionDagger = "2.46.1"
         const val dagger = "com.google.dagger:dagger:$versionDagger"
         const val daggerCompiler = "com.google.dagger:dagger-compiler:$versionDagger"
-        const val daggerAndroid = "com.google.dagger:dagger-android:$versionDagger"
-        const val daggerAndroidS = "com.google.dagger:dagger-android-support:$versionDagger"
-        const val daggerAndroidAP = "com.google.dagger:dagger-android-processor:$versionDagger"
     }
 
     object Other {

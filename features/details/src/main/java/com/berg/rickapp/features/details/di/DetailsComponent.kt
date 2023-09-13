@@ -6,7 +6,10 @@ import com.berg.rickapp.core.di.ScreenScope
 import dagger.Component
 
 @ScreenScope
-@Component(dependencies = [DetailsFeatureDependencies::class], modules = [DetailsFeatureModule::class])
+@Component(
+    dependencies = [DetailsFeatureDependencies::class],
+    modules = [DetailsFeatureModule::class]
+)
 interface DetailsComponent {
 
     fun getViewModelFactory(): AppViewModelFactory
@@ -26,8 +29,4 @@ interface DetailsComponent {
 
         fun destroy() = ComponentStorage.remove(DetailsComponent::class)
     }
-}
-
-interface ComponentInjector {
-    fun init()
 }

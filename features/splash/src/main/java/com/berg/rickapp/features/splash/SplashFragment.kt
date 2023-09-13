@@ -10,10 +10,11 @@ import com.berg.rickapp.common.ui.observeNavigationEvent
 import com.berg.rickapp.core.presentation.base.BaseFragment
 import com.berg.rickapp.features.splash.di.SplashComponent
 import com.berg.rickapp.features.splash.screen.SplashScreen
+import javax.inject.Inject
 
-class SplashFragment: BaseFragment() {
+class SplashFragment @Inject constructor(): BaseFragment() {
 
-    private val component by lazy { SplashComponent.initAndGet() }
+    private val component by lazy { SplashComponent.get() }
     private val viewModel by viewModels<SplashViewModel> { component.getViewModelFactory() }
 
     override fun onCreateView(

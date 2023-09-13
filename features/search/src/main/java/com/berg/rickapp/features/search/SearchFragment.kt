@@ -9,8 +9,9 @@ import com.berg.rickapp.common.ui.setComposeContent
 import com.berg.rickapp.core.presentation.base.BaseFragment
 import com.berg.rickapp.features.search.di.SearchComponent
 import com.berg.rickapp.features.search.screen.SearchScreenRoot
+import javax.inject.Inject
 
-class SearchFragment : BaseFragment() {
+class SearchFragment @Inject constructor() : BaseFragment() {
     private val component by lazy { SearchComponent.get() }
     private val viewModel by viewModels<SearchViewModel> { component.getViewModelFactory() }
 
@@ -25,5 +26,4 @@ class SearchFragment : BaseFragment() {
     override fun onFullDestroy() {
         SearchComponent.destroy()
     }
-
 }
