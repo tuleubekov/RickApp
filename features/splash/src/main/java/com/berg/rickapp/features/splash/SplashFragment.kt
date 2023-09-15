@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import com.berg.rickapp.common.ui.observeNavigationEvent
+import com.berg.rickapp.common.ui.setComposeContent
 import com.berg.rickapp.core.presentation.base.BaseFragment
 import com.berg.rickapp.features.splash.di.SplashComponent
 import com.berg.rickapp.features.splash.screen.SplashScreen
@@ -20,9 +20,7 @@ class SplashFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return ComposeView(requireContext()).apply {
-            setContent { SplashScreen() }
-        }
+        return setComposeContent { SplashScreen() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
