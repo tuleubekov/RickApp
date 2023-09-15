@@ -7,12 +7,10 @@ import javax.inject.Inject
 
 class HomeRouterImpl @Inject constructor() : HomeRouter {
 
-    override fun navigateToDetails(): NavigationEvent {
-        return NavigationEvent.Forward(
-            hostId = R.id.tabs_host_fragment,
-            id = R.id.action_homeFragment_to_detailsFragment
-        )
-    }
+    override fun navigateToDetails(): NavigationEvent = NavigationEvent.Forward(
+        hostId = R.id.tabs_host_fragment,
+        id = R.id.action_homeFragment_to_detailsFragment
+    )
 
     override fun navigateToAbout() = NavigationEvent.Forward(
         hostId = R.id.root_nav_host,

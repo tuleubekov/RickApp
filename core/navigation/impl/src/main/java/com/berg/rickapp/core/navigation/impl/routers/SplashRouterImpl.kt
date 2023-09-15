@@ -7,10 +7,8 @@ import javax.inject.Inject
 
 class SplashRouterImpl @Inject constructor() : SplashRouter {
 
-    override fun navigateToTabsFragment(): NavigationEvent {
-        return NavigationEvent.Forward(
-            hostId = R.id.root_nav_host,
-            id = R.id.action_splashFragment_to_tabsFragment,
-        )
-    }
+    override fun navigateToTabsFragment(): NavigationEvent = NavigationEvent.Forward(
+        hostId = R.id.root_nav_host,
+        id = R.id.action_splashFragment_to_tabsFragment,
+    )
 }
