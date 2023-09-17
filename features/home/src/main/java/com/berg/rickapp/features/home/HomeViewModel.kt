@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.berg.rickapp.core.navigation.api.NavFlowImpl
-import com.berg.rickapp.core.navigation.api.NavigationFlow
+import com.berg.rickapp.core.navigation.api.nav.NavFlow
+import com.berg.rickapp.core.navigation.api.nav.NavFlowImpl
+import com.berg.rickapp.core.navigation.api.router.HomeRouter
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.domain.model.Character
-import com.berg.rickapp.features.home.router.HomeRouter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -18,7 +18,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val interactor: HomeInteractor,
     private val router: HomeRouter,
-) : ViewModel(), NavigationFlow by NavFlowImpl() {
+) : ViewModel(), NavFlow by NavFlowImpl() {
 
     private val _statePagerCharacters = MutableStateFlow(PagingData.empty<Character>())
     val statePagerCharacters: StateFlow<PagingData<Character>> = _statePagerCharacters

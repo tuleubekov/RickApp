@@ -25,7 +25,7 @@ class SplashFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeNavigationEvent(viewModel.navigationFlow)
+        observeNavigationEvent(viewModel)
     }
 
     override fun onFullDestroy() {

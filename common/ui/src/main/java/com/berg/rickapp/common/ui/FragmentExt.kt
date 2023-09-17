@@ -10,10 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.berg.rickapp.core.navigation.api.NavigationEvent
+import com.berg.rickapp.core.navigation.api.nav.NavFlow
+import com.berg.rickapp.core.navigation.api.nav.NavigationEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -39,11 +39,11 @@ fun Fragment.setComposeContent(content: @Composable () -> Unit): View {
 }
 
 fun Fragment.observeNavigationEvent(
-    event: Flow<NavigationEvent>,
+    nav: NavFlow,
     lifecycle: Lifecycle = viewLifecycleOwner.lifecycle,
     minState: Lifecycle.State = Lifecycle.State.STARTED,
 ) {
-    event.onEach {
+    nav.navigationFlow.onEach {
         when (it) {
             is NavigationEvent.Forward -> {
                 requireActivity().findNavController(it.hostId).navigate(it.id)

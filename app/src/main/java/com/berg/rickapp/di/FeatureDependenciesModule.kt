@@ -3,10 +3,11 @@ package com.berg.rickapp.di
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.features.details.di.DetailsFeatureDependencies
 import com.berg.rickapp.features.home.di.HomeFeatureDependencies
-import com.berg.rickapp.features.home.router.HomeRouter
+import com.berg.rickapp.core.navigation.api.router.HomeRouter
 import com.berg.rickapp.features.search.di.SearchFeatureDependencies
 import com.berg.rickapp.features.splash.di.SplashFeatureDependencies
-import com.berg.rickapp.features.splash.router.SplashRouter
+import com.berg.rickapp.core.navigation.api.router.SplashRouter
+import com.berg.rickapp.core.navigation.impl.di.NavComponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -16,11 +17,9 @@ class FeatureDependenciesModule {
 
     @Singleton
     @Provides
-    fun provideSplashFeatureDependencies(
-        splashRouter: SplashRouter,
-    ): SplashFeatureDependencies {
+    fun provideSplashFeatureDependencies(): SplashFeatureDependencies {
         return object : SplashFeatureDependencies {
-            override fun getSplashRouter(): SplashRouter = splashRouter
+            override fun getSplashRouter(): SplashRouter = NavComponent.get().getSplashRouter()
         }
     }
 
@@ -28,11 +27,10 @@ class FeatureDependenciesModule {
     @Provides
     fun provideHomeFeatureDependencies(
         homeInteractor: HomeInteractor,
-        homeRouter: HomeRouter,
     ): HomeFeatureDependencies {
         return object : HomeFeatureDependencies {
             override fun getHomeInteractor(): HomeInteractor = homeInteractor
-            override fun getHomeRouter(): HomeRouter = homeRouter
+            override fun getHomeRouter(): HomeRouter = NavComponent.get().getHomeRouter()
         }
     }
 

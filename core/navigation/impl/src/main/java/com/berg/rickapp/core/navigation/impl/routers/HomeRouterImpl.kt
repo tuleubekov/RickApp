@@ -1,9 +1,9 @@
 package com.berg.rickapp.core.navigation.impl.routers
 
-import com.berg.rickapp.core.navigation.api.NavigationEvent
+import com.berg.rickapp.core.navigation.api.nav.NavigationEvent
+import com.berg.rickapp.core.navigation.api.router.HomeRouter
 import com.berg.rickapp.core.navigation.api.util.navApiR_id
 import com.berg.rickapp.core.navigation.impl.R
-import com.berg.rickapp.features.home.router.HomeRouter
 import javax.inject.Inject
 
 class HomeRouterImpl @Inject constructor() : HomeRouter {

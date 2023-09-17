@@ -1,16 +1,16 @@
-package com.berg.rickapp.core.navigation.api
+package com.berg.rickapp.core.navigation.api.nav
 
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 
-interface NavigationFlow {
+interface NavFlow {
     val navigationFlow: Flow<NavigationEvent>
 
     suspend fun sendNavEvent(event: NavigationEvent)
 }
 
-class NavFlowImpl : NavigationFlow {
+class NavFlowImpl : NavFlow {
     private val navChannel = Channel<NavigationEvent>(Channel.BUFFERED)
 
     override val navigationFlow: Flow<NavigationEvent>
