@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.berg.rickapp.common.ui.setComposeContent
 import com.berg.rickapp.core.presentation.base.BaseFragment
@@ -22,11 +23,15 @@ class DetailsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return setComposeContent { DetailsScreenRoot(viewModel) }
+        return setComposeContent { DetailsScreenRoot(viewModel) { back() } }
     }
 
     override fun onFullDestroy() {
         DetailsComponent.destroy()
+    }
+
+    private fun back() {
+        findNavController().navigateUp()
     }
 
 }

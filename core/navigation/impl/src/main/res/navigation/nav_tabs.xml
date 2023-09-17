@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/nav_home_graph"
-    android:id="@+id/nav_main_graph">
+    android:id="@id/nav_main_graph">
 
     <include app:graph="@navigation/nav_tab_home" />
 
@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/locationsFragment"
-        android:name="com.berg.rickapp.core.navigation.impl.tabs.ListLocationFragment"
+        android:name="com.berg.rickapp.features.tabs.tabs.ListLocationFragment"
         android:label="fragment_location_list"
         tools:layout="@layout/fragment_location_list" />
 

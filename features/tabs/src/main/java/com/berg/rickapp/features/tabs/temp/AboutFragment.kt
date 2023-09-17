@@ -1,4 +1,4 @@
-package com.berg.rickapp.core.navigation.impl.temp
+package com.berg.rickapp.features.tabs.temp
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.berg.rickapp.core.navigation.impl.R
+import com.berg.rickapp.core.navigation.api.util.navApiR_id
 
 class AboutFragment : Fragment() {
 
@@ -23,7 +22,6 @@ class AboutFragment : Fragment() {
     }
 
     private fun back() {
-        requireActivity().findNavController(R.id.root_nav_host).navigateUp()
-        findNavController()
+        requireActivity().findNavController(navApiR_id.root_nav_host).navigateUp()
     }
 }

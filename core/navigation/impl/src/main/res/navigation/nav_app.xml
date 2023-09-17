@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/tabsFragment"
-        android:name="com.berg.rickapp.core.navigation.impl.TabsFragment"
+        android:name="com.berg.rickapp.features.tabs.TabsFragment"
         android:label="fragment_tabs"
         tools:layout="@layout/fragment_tabs">
         <action android:id="@+id/action_tabsFragment_to_aboutFragment"
@@ -27,8 +27,7 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.berg.rickapp.core.navigation.impl.temp.AboutFragment"
-        android:label="fragment_about"
-        tools:layout="@layout/fragment_about" />
+        android:name="com.berg.rickapp.features.tabs.temp.AboutFragment"
+        android:label="fragment_about" />
 
 </navigation>

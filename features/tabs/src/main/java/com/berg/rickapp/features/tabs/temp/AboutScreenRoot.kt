@@ -1,4 +1,4 @@
-package com.berg.rickapp.core.navigation.impl.temp
+package com.berg.rickapp.features.tabs.temp
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

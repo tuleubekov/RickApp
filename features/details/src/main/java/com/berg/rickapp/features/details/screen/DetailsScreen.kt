@@ -9,19 +9,25 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.berg.rickapp.common.ui.AppButton
 import com.berg.rickapp.features.details.DetailsViewModel
 
 @Composable
 fun DetailsScreenRoot(
     viewModel: DetailsViewModel,
+    back: () -> Unit = {}
 ) {
     val name by viewModel.mStateCharacter.collectAsState()
-    DetailsScreen(name)
+    DetailsScreen(name, back)
 }
 
 @Composable
-fun DetailsScreen(name: String) {
+fun DetailsScreen(
+    name: String,
+    back: () -> Unit = {},
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -29,5 +35,12 @@ fun DetailsScreen(name: String) {
     ) {
         Text(fontSize = 20.sp, text = name)
         Text(fontSize = 20.sp, text = "DETAILS SCREEN")
+        AppButton(text = "back") { back() }
     }
+}
+
+@Preview
+@Composable
+fun DetailScreenPreview() {
+    DetailsScreen(name = "Rick")
 }

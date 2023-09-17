@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,15 +15,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.berg.rickapp.common.ui.AppButton
 import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.features.home.HomeViewModel
-import com.berg.rickapp.features.home.screen.util.ErrorMessage
-import com.berg.rickapp.features.home.screen.util.LoadingNextPageItem
-import com.berg.rickapp.features.home.screen.util.PageLoader
 import kotlinx.coroutines.flow.flowOf
 
 @Composable
@@ -35,6 +31,7 @@ fun HomeScreenRoot(
     HomeScreen(
         items = pagingCharacters,
         retry = { viewModel.retry() },
+        goto = { viewModel.gotoDetails() }
     )
 }
 
@@ -42,6 +39,7 @@ fun HomeScreenRoot(
 fun HomeScreen(
     items: LazyPagingItems<Character>,
     retry: () -> Unit = {},
+    goto: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -49,6 +47,7 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(fontSize = 20.sp, text = "HOME FRAGMENT")
+        AppButton(text = "Goto") { goto() }
     }
 }
 

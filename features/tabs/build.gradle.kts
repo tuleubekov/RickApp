@@ -10,7 +10,7 @@ repositories {
 }
 
 android {
-    namespace = "com.berg.rickapp.features.details"
+    namespace = "com.berg.rickapp.features.tabs"
     compileSdk = 33
 
     defaultConfig {
@@ -48,9 +48,11 @@ android {
 
 dependencies {
     // Core Android dependencies
+    implementation(Deps.Core.androidxCoreKtx)
     implementation(Deps.Core.fragmentKtx)
     implementation(Deps.Core.appCompat)
     implementation(Deps.Core.constraint)
+    implementation(Deps.Core.material)
 
     // Compose
     val composeBom = platform(Deps.Compose.composeBom)
@@ -63,20 +65,31 @@ dependencies {
     implementation(Deps.Compose.foundationLayout)
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.runtimeLivedata)
+    implementation(Deps.Compose.viewModelCompose)
     implementation(Deps.Compose.toolingPreview)
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
-    // Di
-    implementation(Deps.Di.dagger)
-    kapt(Deps.Di.daggerCompiler)
+    implementation(Deps.Core.paging)
+    implementation(Deps.Compose.paging)
 
     // Nav
     implementation(Deps.Nav.navigationFragment)
     implementation(Deps.Nav.navigationUi)
 
+    implementation(Deps.Other.viewBindingDelegate)
+
+    // Di
+    implementation(Deps.Di.dagger)
+    kapt(Deps.Di.daggerCompiler)
+
     // Other
     implementation(Deps.Other.viewBindingDelegate)
+
+    // Tests
+    testImplementation(Deps.Test.junit)
+    androidTestImplementation(Deps.Test.extJunit)
+    androidTestImplementation(Deps.Test.espressoCore)
 
     // Modules
     implementation(project(Modules.Common.ui))
@@ -86,9 +99,4 @@ dependencies {
     implementation(project(Modules.Core.presentation))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
-
-    // Tests
-    testImplementation(Deps.Test.junit)
-    androidTestImplementation(Deps.Test.extJunit)
-    androidTestImplementation(Deps.Test.espressoCore)
 }

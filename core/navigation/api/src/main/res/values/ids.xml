@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="root_nav_host" />
+    <item type="id" name="tabs_host_fragment"  />
+    <item type="id" name="nav_home_graph"  />
+    <item type="id" name="nav_search_graph"  />
+</resources>
