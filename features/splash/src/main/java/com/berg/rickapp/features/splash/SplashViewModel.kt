@@ -1,20 +1,19 @@
 package com.berg.rickapp.features.splash
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.berg.rickapp.core.navigation.api.nav.Navigational
-import com.berg.rickapp.core.navigation.api.nav.NavigationalImpl
-import com.berg.rickapp.core.navigation.api.router.SplashRouter
+import com.berg.rickapp.core.navigation.api.NavigationApi
+import com.berg.rickapp.core.presentation.base.BaseViewModel
+import com.berg.rickapp.features.splash.nav.SplashDirections
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
-    private val router: SplashRouter,
-) : ViewModel(), Navigational by NavigationalImpl() {
+    private val navApi: NavigationApi<SplashDirections>,
+) : BaseViewModel() {
 
     init {
         viewModelScope.launch {
-            sendNavEvent(router.navigateToTabsFragment())
+            sendNavEvent(navApi.direct(SplashDirections.ToTabs))
         }
     }
 }

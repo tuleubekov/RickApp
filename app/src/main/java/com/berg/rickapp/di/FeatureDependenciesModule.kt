@@ -1,13 +1,14 @@
 package com.berg.rickapp.di
 
+import com.berg.rickapp.core.navigation.api.NavigationApi
+import com.berg.rickapp.core.navigation.impl.di.NavigationImplComponent
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.features.details.di.DetailsFeatureDependencies
 import com.berg.rickapp.features.home.di.HomeFeatureDependencies
-import com.berg.rickapp.core.navigation.api.router.HomeRouter
+import com.berg.rickapp.features.home.nav.HomeDirections
 import com.berg.rickapp.features.search.di.SearchFeatureDependencies
 import com.berg.rickapp.features.splash.di.SplashFeatureDependencies
-import com.berg.rickapp.core.navigation.api.router.SplashRouter
-import com.berg.rickapp.core.navigation.impl.di.NavComponent
+import com.berg.rickapp.features.splash.nav.SplashDirections
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -19,7 +20,8 @@ class FeatureDependenciesModule {
     @Provides
     fun provideSplashFeatureDependencies(): SplashFeatureDependencies {
         return object : SplashFeatureDependencies {
-            override fun getSplashRouter(): SplashRouter = NavComponent.get().getSplashRouter()
+            override fun getSplashRouter(): NavigationApi<SplashDirections> =
+                NavigationImplComponent.get().getSplashNavigationApi()
         }
     }
 
@@ -30,7 +32,8 @@ class FeatureDependenciesModule {
     ): HomeFeatureDependencies {
         return object : HomeFeatureDependencies {
             override fun getHomeInteractor(): HomeInteractor = homeInteractor
-            override fun getHomeRouter(): HomeRouter = NavComponent.get().getHomeRouter()
+            override fun getHomeRouter(): NavigationApi<HomeDirections> =
+                NavigationImplComponent.get().getHomeNavigationApi()
         }
     }
 
