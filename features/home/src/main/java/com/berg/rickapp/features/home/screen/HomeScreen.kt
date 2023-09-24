@@ -2,6 +2,7 @@
 
 package com.berg.rickapp.features.home.screen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -29,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.berg.rickapp.common.ui.AppBar
+import com.berg.rickapp.common.ui.AppButton
 import com.berg.rickapp.common.ui.AppImage
 import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.features.home.HomeViewModel
@@ -48,6 +50,7 @@ fun HomeScreenRoot(
     HomeScreen(
         items = pagingCharacters.value,
         pullRefreshState = refreshState,
+        gotoDetails = { viewModel.gotoDetails() },
     )
 }
 
@@ -56,17 +59,27 @@ fun HomeScreen(
     items: List<Character>,
     refreshing: Boolean = false,
     pullRefreshState: PullRefreshState,
+    gotoDetails: () -> Unit = {},
 ) {
     Scaffold(
         topBar = { AppBar() },
         content = { padding ->
-            Box(modifier = Modifier.pullRefresh(pullRefreshState)) {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(padding.calculateTopPadding() + 16.dp),
+            Box(
+                modifier = Modifier.pullRefresh(pullRefreshState).padding(top = 16.dp),
+                contentAlignment = Alignment.TopCenter,
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    items(items) {
-                        CharacterItem(itemEntity = it)
+                    AppButton(text = "goto Details") { gotoDetails() }
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        contentPadding = PaddingValues(padding.calculateTopPadding() + 16.dp),
+                    ) {
+                        items(items) {
+                            CharacterItem(itemEntity = it)
+                        }
                     }
                 }
                 PullRefreshIndicator(refreshing, pullRefreshState, Modifier.align(Alignment.TopCenter))

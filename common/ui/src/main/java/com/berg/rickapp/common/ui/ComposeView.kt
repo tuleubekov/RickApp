@@ -20,8 +20,8 @@ fun AppBar() = TopAppBar(
 )
 
 @Composable
-fun AppButton(text: String, onClick: () -> Unit) {
-    Button(onClick = { onClick() }) {
+fun AppButton(text: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Button(modifier = modifier, onClick = { onClick() }) {
         Text(text = text)
     }
 }
