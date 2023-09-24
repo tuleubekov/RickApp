@@ -18,6 +18,9 @@ class SearchViewModel @Inject constructor(
     private val interactor: HomeInteractor,
 ) : ViewModel(), NavFlow by NavFlowImpl() {
 
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing: StateFlow<Boolean> = _isRefreshing
+
     private val _statePagerCharacters = MutableStateFlow(PagingData.empty<Character>())
     val statePagerCharacters: StateFlow<PagingData<Character>> = _statePagerCharacters
 

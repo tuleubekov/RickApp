@@ -38,7 +38,7 @@ class NetworkModule {
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-//            .addInterceptor(getHttpLoggingInterceptor())
+            .addInterceptor(getHttpLoggingInterceptor())
             .build()
     }
 

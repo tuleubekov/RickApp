@@ -44,4 +44,6 @@ dependencies {
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
+
+    implementation(project(Modules.Common.utils))
 }

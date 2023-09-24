@@ -67,12 +67,14 @@ object Deps {
     object Other {
         private const val versionTime = "0.4.0"
         private const val versionGlide = "4.15.1"
+        private const val versionGlideCompose = "1.0.0-alpha.5"
         private const val versionViewBindingDelegate = "1.5.9"
         private const val versionTimber = "5.0.1"
         private const val versionKSerialization = "1.5.1"
 
         const val time = "org.jetbrains.kotlinx:kotlinx-datetime:$versionTime"
         const val glide = "com.github.bumptech.glide:glide:$versionGlide"
+        const val glideCompose = "com.github.bumptech.glide:compose:$versionGlideCompose"
         const val timber = "com.jakewharton.timber:timber:$versionTimber"
         const val viewBindingDelegate =
             "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$versionViewBindingDelegate"

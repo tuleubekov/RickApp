@@ -13,6 +13,7 @@ interface RemoteDataSource {
     suspend fun getCharacters(page: Int): CharacterList
     suspend fun getAllCharacters(url: String): CharacterList
     suspend fun getSingleCharacter(url: String): Character
+    suspend fun getMultipleCharacters(idsString: String): List<Character>
 }
 
 class RemoteDataSourceImpl @Inject constructor(
@@ -31,5 +32,9 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getSingleCharacter(url: String): Character {
         return api.getSingleCharacter(url).let(mapper::map)
+    }
+
+    override suspend fun getMultipleCharacters(idsString: String): List<Character> {
+        return api.getMultipleCharacters(idsString).map(mapper::map)
     }
 }

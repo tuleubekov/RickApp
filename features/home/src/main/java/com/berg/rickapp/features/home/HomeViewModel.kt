@@ -2,8 +2,6 @@ package com.berg.rickapp.features.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.berg.rickapp.core.navigation.api.nav.NavFlow
 import com.berg.rickapp.core.navigation.api.nav.NavFlowImpl
 import com.berg.rickapp.core.navigation.api.router.HomeRouter
@@ -11,7 +9,6 @@ import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.domain.model.Character
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,15 +17,18 @@ class HomeViewModel @Inject constructor(
     private val router: HomeRouter,
 ) : ViewModel(), NavFlow by NavFlowImpl() {
 
-    private val _statePagerCharacters = MutableStateFlow(PagingData.empty<Character>())
-    val statePagerCharacters: StateFlow<PagingData<Character>> = _statePagerCharacters
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing: StateFlow<Boolean> = _isRefreshing
+
+    private val _stateRandomCharacters = MutableStateFlow(emptyList<Character>())
+    val stateRandomCharacters: StateFlow<List<Character>> = _stateRandomCharacters
 
     init {
-        getPager()
+        getRandomCharacters()
     }
 
     fun retry() {
-        getPager()
+        getRandomCharacters()
     }
 
     fun gotoDetails() {
@@ -39,14 +39,11 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch { sendNavEvent(router.navigateToAbout()) }
     }
 
-    private fun getPager() {
+    private fun getRandomCharacters() {
         viewModelScope.launch {
-            interactor.getCharacters()
-                .distinctUntilChanged()
-                .cachedIn(viewModelScope)
-                .collect {
-                    _statePagerCharacters.value = it
-                }
+            kotlin.runCatching { interactor.getRandomCharacters() }
+                .onSuccess { _stateRandomCharacters.value = it }
+                .onFailure { _stateRandomCharacters.value = emptyList() }
         }
     }
 }

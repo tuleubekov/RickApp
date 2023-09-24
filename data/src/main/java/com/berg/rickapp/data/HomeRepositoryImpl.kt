@@ -27,4 +27,8 @@ class HomeRepositoryImpl @Inject constructor(
     override suspend fun getCharacter(url: String): Character {
         return remoteDataSource.getSingleCharacter(url)
     }
+
+    override suspend fun getRandomCharacters(idsString: String): List<Character> {
+        return remoteDataSource.getMultipleCharacters(idsString)
+    }
 }

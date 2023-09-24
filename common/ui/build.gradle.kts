@@ -70,6 +70,8 @@ dependencies {
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
+    api(Deps.Other.glideCompose)
+
     // Modules
     implementation(project(Modules.Core.navApi))
 

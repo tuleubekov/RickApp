@@ -1,74 +1,105 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package com.berg.rickapp.features.home.screen
 
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.PullRefreshState
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.paging.PagingData
-import androidx.paging.compose.LazyPagingItems
-import androidx.paging.compose.collectAsLazyPagingItems
-import com.berg.rickapp.common.ui.AppButton
+import com.berg.rickapp.common.ui.AppBar
+import com.berg.rickapp.common.ui.AppImage
 import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.features.home.HomeViewModel
-import kotlinx.coroutines.flow.flowOf
 
 @Composable
 fun HomeScreenRoot(
     viewModel: HomeViewModel,
 ) {
-    val pagingCharacters = viewModel.statePagerCharacters.collectAsLazyPagingItems()
+    val pagingCharacters = viewModel.stateRandomCharacters.collectAsState()
+    val refreshing by viewModel.isRefreshing.collectAsState()
+
+    val refreshState = rememberPullRefreshState(
+        refreshing = refreshing,
+        onRefresh = { viewModel.retry() }
+    )
+
     HomeScreen(
-        items = pagingCharacters,
-        retry = { viewModel.retry() },
-        goto = { viewModel.gotoDetails() }
+        items = pagingCharacters.value,
+        pullRefreshState = refreshState,
     )
 }
 
 @Composable
 fun HomeScreen(
-    items: LazyPagingItems<Character>,
-    retry: () -> Unit = {},
-    goto: () -> Unit = {},
+    items: List<Character>,
+    refreshing: Boolean = false,
+    pullRefreshState: PullRefreshState,
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(fontSize = 20.sp, text = "HOME FRAGMENT")
-        AppButton(text = "Goto") { goto() }
-    }
+    Scaffold(
+        topBar = { AppBar() },
+        content = { padding ->
+            Box(modifier = Modifier.pullRefresh(pullRefreshState)) {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    contentPadding = PaddingValues(padding.calculateTopPadding() + 16.dp),
+                ) {
+                    items(items) {
+                        CharacterItem(itemEntity = it)
+                    }
+                }
+                PullRefreshIndicator(refreshing, pullRefreshState, Modifier.align(Alignment.TopCenter))
+            }
+        }
+    )
 }
 
 @Composable
 fun CharacterItem(
     itemEntity: Character?,
 ) {
-    Text(
-        modifier = Modifier
-            .fillMaxWidth()
-            .border(width = 1.dp, color = Color.Black)
-            .padding(16.dp),
-        fontSize = 20.sp, text = itemEntity?.name ?: "---",
-    )
-    Spacer(modifier = Modifier.padding(4.dp))
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        AppImage(path = itemEntity?.image,)
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            text = itemEntity?.name ?: "---",
+            fontSize = 20.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center,
+        )
+        Spacer(modifier = Modifier.padding(4.dp))
+    }
 }
 
 @Preview
 @Composable
 fun HomeScreenPreview() {
     HomeScreen(
-        items = flowOf(PagingData.empty<Character>()).collectAsLazyPagingItems()
+        items = emptyList(),
+        pullRefreshState = rememberPullRefreshState(refreshing = false, onRefresh = {})
     )
 }
