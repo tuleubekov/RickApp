@@ -2,6 +2,7 @@ package com.berg.rickapp.core.presentation.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.berg.rickapp.core.presentation.core.FragmentDestroyChecker
 
 open class BaseFragment : Fragment() {
     private val destroyChecker = FragmentDestroyChecker(::onFullDestroy)

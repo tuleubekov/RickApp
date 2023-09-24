@@ -1,4 +1,4 @@
-package com.berg.rickapp.core.presentation.base
+package com.berg.rickapp.core.presentation.factory
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory

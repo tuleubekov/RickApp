@@ -1,7 +1,7 @@
 package com.berg.rickapp.features.splash.di
 
 import com.berg.rickapp.core.di.ComponentStorage
-import com.berg.rickapp.core.presentation.base.AppViewModelFactory
+import com.berg.rickapp.core.presentation.factory.AppViewModelFactory
 import dagger.Component
 
 @Component(dependencies = [SplashFeatureDependencies::class], modules = [SplashModule::class])

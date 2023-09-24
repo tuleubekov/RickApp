@@ -1,11 +1,9 @@
 package com.berg.rickapp.features.search
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.berg.rickapp.core.navigation.api.nav.NavFlow
-import com.berg.rickapp.core.navigation.api.nav.NavFlowImpl
+import com.berg.rickapp.core.presentation.base.BaseViewModel
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.domain.model.Character
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,10 +14,7 @@ import javax.inject.Inject
 
 class SearchViewModel @Inject constructor(
     private val interactor: HomeInteractor,
-) : ViewModel(), NavFlow by NavFlowImpl() {
-
-    private val _isRefreshing = MutableStateFlow(false)
-    val isRefreshing: StateFlow<Boolean> = _isRefreshing
+) : BaseViewModel() {
 
     private val _statePagerCharacters = MutableStateFlow(PagingData.empty<Character>())
     val statePagerCharacters: StateFlow<PagingData<Character>> = _statePagerCharacters

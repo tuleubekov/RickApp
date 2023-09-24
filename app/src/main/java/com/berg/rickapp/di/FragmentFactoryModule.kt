@@ -1,7 +1,7 @@
 package com.berg.rickapp.di
 
 import androidx.fragment.app.FragmentFactory
-import com.berg.rickapp.core.presentation.base.AppFragmentFactory
+import com.berg.rickapp.core.presentation.factory.AppFragmentFactory
 import dagger.Binds
 import dagger.Module
 

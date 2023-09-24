@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.berg.rickapp.core.navigation.api.nav.NavFlow
+import com.berg.rickapp.core.navigation.api.nav.Navigational
 import com.berg.rickapp.core.navigation.api.nav.NavigationEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -39,7 +39,7 @@ fun Fragment.setComposeContent(content: @Composable () -> Unit): View {
 }
 
 fun Fragment.observeNavigationEvent(
-    nav: NavFlow,
+    nav: Navigational,
     lifecycle: Lifecycle = viewLifecycleOwner.lifecycle,
     minState: Lifecycle.State = Lifecycle.State.STARTED,
 ) {
