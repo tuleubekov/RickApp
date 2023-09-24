@@ -70,7 +70,9 @@ dependencies {
     debugImplementation(Deps.Compose.uiTooling)
     implementation(Deps.Compose.accomponistThemeAdapterMaterial)
 
-    api(Deps.Other.glideCompose)
+    // Images
+    implementation(Deps.Other.glideCompose)
+    implementation(Deps.Other.coilCompose)
 
     // Modules
     implementation(project(Modules.Core.navApi))

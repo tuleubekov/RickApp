@@ -8,9 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 @Composable
 fun AppBar() = TopAppBar(
@@ -26,12 +28,14 @@ fun AppButton(text: String, modifier: Modifier = Modifier, onClick: () -> Unit) 
     }
 }
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun AppImage(path: String?) {
-    GlideImage(
-        model = path,
-        //loading = placeholder(R.drawable.avatar_unknown),
+    AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(path)
+            .crossfade(300)
+            .build(),
+        placeholder = painterResource(R.drawable.avatar_unknown),
         contentDescription = "",
         modifier = Modifier.clip(RoundedCornerShape(8.dp)),
     )
