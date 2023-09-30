@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.berg.rickapp.common.ui.observeNavigationEvent
 import com.berg.rickapp.common.ui.setComposeContent
+import com.berg.rickapp.core.navigation.api.util.observeNavigationEvent
 import com.berg.rickapp.core.presentation.base.BaseFragment
 import com.berg.rickapp.features.home.di.HomeComponent
 import com.berg.rickapp.features.home.screen.HomeScreenRoot

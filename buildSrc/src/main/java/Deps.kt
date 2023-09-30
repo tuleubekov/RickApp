@@ -23,7 +23,7 @@ object Deps {
         private const val versionViewModelCompose = "2.5.1"
         private const val versionAccomponistMaterial = "0.30.1"
         private const val versionPaging = "3.2.0"
-        const val versionCompose = "1.4.0"
+        const val versionCompose = "1.4.1"
 
         const val composeBom = "androidx.compose:compose-bom:$versionComposeBom"
         const val runtime = "androidx.compose.runtime:runtime"

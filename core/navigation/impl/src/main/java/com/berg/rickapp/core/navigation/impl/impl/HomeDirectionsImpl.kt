@@ -1,4 +1,4 @@
-package com.berg.rickapp.core.navigation.impl.routers
+package com.berg.rickapp.core.navigation.impl.impl
 
 import com.berg.rickapp.core.navigation.api.nav.NavigationEvent
 import com.berg.rickapp.core.navigation.api.NavigationApi

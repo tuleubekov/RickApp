@@ -1,44 +1,13 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    androidLibrary
     kotlin("kapt")
 }
 
-repositories {
-    google()
-    mavenCentral()
-}
-
+@Suppress("UnstableApiUsage")
 android {
     namespace = "com.berg.rickapp.features.details"
-    compileSdk = 33
 
-    defaultConfig {
-        minSdk = 24
-        targetSdk = 33
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
     buildFeatures {
-        viewBinding = true
         compose = true
     }
     composeOptions {
@@ -50,7 +19,6 @@ dependencies {
     // Core Android dependencies
     implementation(Deps.Core.fragmentKtx)
     implementation(Deps.Core.appCompat)
-    implementation(Deps.Core.constraint)
 
     // Compose
     val composeBom = platform(Deps.Compose.composeBom)
@@ -70,13 +38,6 @@ dependencies {
     // Di
     implementation(Deps.Di.dagger)
     kapt(Deps.Di.daggerCompiler)
-
-    // Nav
-    implementation(Deps.Nav.navigationFragment)
-    implementation(Deps.Nav.navigationUi)
-
-    // Other
-    implementation(Deps.Other.viewBindingDelegate)
 
     // Modules
     implementation(project(Modules.Common.ui))
