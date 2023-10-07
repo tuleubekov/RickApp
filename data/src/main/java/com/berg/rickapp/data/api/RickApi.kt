@@ -9,6 +9,10 @@ import retrofit2.http.Url
 
 interface RickApi {
 
+    companion object {
+        const val MAX_CHARACTERS = 826
+    }
+
     @GET("character")
     suspend fun getCharacters(@Query("page") page: Int): CharacterListDto
 

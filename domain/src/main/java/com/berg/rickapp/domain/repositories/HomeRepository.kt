@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface HomeRepository {
     suspend fun getCharacters(): Flow<PagingData<Character>>
     suspend fun getCharacter(url: String): Character
-    suspend fun getRandomCharacters(idsString: String): List<Character>
+    suspend fun getMultipleCharacters(count: Int): List<Character>
 }

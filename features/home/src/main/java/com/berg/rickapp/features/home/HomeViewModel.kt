@@ -15,6 +15,9 @@ class HomeViewModel @Inject constructor(
     private val interactor: HomeInteractor,
     private val navApi: NavigationApi<HomeDirections>,
 ) : BaseViewModel() {
+    companion object {
+        private const val ITEM_COUNT = 6
+    }
 
     private val _stateRandomCharacters = MutableStateFlow(emptyList<Character>())
     val stateRandomCharacters: StateFlow<List<Character>> = _stateRandomCharacters
@@ -37,7 +40,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getRandomCharacters() {
         viewModelScope.launch {
-            kotlin.runCatching { interactor.getRandomCharacters() }
+            kotlin.runCatching { interactor.getRandomCharacters(ITEM_COUNT) }
                 .onSuccess { _stateRandomCharacters.value = it }
                 .onFailure { _stateRandomCharacters.value = emptyList() }
         }
