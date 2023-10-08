@@ -3,24 +3,28 @@ package com.berg.rickapp.features.home
 import androidx.lifecycle.viewModelScope
 import com.berg.rickapp.core.navigation.api.NavigationApi
 import com.berg.rickapp.core.presentation.base.BaseViewModel
+import com.berg.rickapp.core.presentation.core.ViewStateDelegate
+import com.berg.rickapp.core.presentation.core.ViewStateDelegateImpl
 import com.berg.rickapp.domain.HomeInteractor
 import com.berg.rickapp.domain.model.Character
+import com.berg.rickapp.features.home.HomeViewModel.UIState
 import com.berg.rickapp.features.home.nav.HomeDirections
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val interactor: HomeInteractor,
     private val navApi: NavigationApi<HomeDirections>,
-) : BaseViewModel() {
+) : BaseViewModel(), ViewStateDelegate<UIState> by ViewStateDelegateImpl(UIState()) {
     companion object {
         private const val ITEM_COUNT = 6
     }
 
-    private val _stateRandomCharacters = MutableStateFlow(emptyList<Character>())
-    val stateRandomCharacters: StateFlow<List<Character>> = _stateRandomCharacters
+    data class UIState(
+        val isLoading: Boolean = false,
+        val isError: Boolean = false,
+        val data: List<Character> = emptyList(),
+    )
 
     init {
         getRandomCharacters()
@@ -40,9 +44,12 @@ class HomeViewModel @Inject constructor(
 
     private fun getRandomCharacters() {
         viewModelScope.launch {
+            reduce { state -> state.copy(isLoading = true) }
             kotlin.runCatching { interactor.getRandomCharacters(ITEM_COUNT) }
-                .onSuccess { _stateRandomCharacters.value = it }
-                .onFailure { _stateRandomCharacters.value = emptyList() }
+                .onSuccess { reduce { state -> state.copy(data = it) } }
+                .onFailure { reduce { state -> state.copy(isError = true) } }
+        }.invokeOnCompletion {
+            viewModelScope.asyncReduce { state -> state.copy(isLoading = false) }
         }
     }
 }

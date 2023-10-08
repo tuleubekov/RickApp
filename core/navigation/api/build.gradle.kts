@@ -9,6 +9,7 @@ android {
 dependencies {
     implementation(Deps.Core.fragmentKtx)
     implementation(Deps.Nav.navigationFragment)
+    implementation(Deps.Compose.viewModelCompose)
 
     // Tests
     testImplementation(Deps.Test.junit)

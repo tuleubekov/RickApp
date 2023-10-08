@@ -18,7 +18,6 @@ import androidx.compose.material.pullrefresh.PullRefreshState
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,6 +30,7 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.berg.rickapp.common.ui.AppBar
+import com.berg.rickapp.core.presentation.utils.collectUIStateWithLifecycle
 import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.features.search.SearchViewModel
 import com.berg.rickapp.features.search.screen.component.ErrorMessage
@@ -42,17 +42,17 @@ import kotlinx.coroutines.flow.flowOf
 fun SearchScreenRoot(
     viewModel: SearchViewModel,
 ) {
-    val pagingCharacters = viewModel.statePagerCharacters.collectAsLazyPagingItems()
-    val refreshing by viewModel.isRefreshing.collectAsState()
+    val uiState by viewModel.collectUIStateWithLifecycle()
+    val pagingCharacters = flowOf(uiState.data).collectAsLazyPagingItems()
 
     val refreshState = rememberPullRefreshState(
-        refreshing = refreshing,
+        refreshing = uiState.isLoading,
         onRefresh = { viewModel.retry() }
     )
 
     SearchScreen(
         items = pagingCharacters,
-        refreshing = refreshing,
+        refreshing = uiState.isLoading,
         pullRefreshState = refreshState,
         retry = { viewModel.retry() },
     )

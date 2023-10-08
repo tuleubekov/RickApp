@@ -26,6 +26,7 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun getCharacters(page: Int): CharacterList {
         return api.getCharacters(page).let(listMapper::map)
     }
+
     override suspend fun getAllCharacters(url: String): CharacterList {
         return api.getAllCharacters(url).let(listMapper::map)
     }

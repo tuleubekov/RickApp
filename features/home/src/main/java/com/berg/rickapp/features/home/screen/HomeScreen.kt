@@ -20,7 +20,6 @@ import androidx.compose.material.pullrefresh.PullRefreshState
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.berg.rickapp.common.ui.AppBar
 import com.berg.rickapp.common.ui.AppButton
 import com.berg.rickapp.common.ui.AppImage
+import com.berg.rickapp.core.presentation.utils.collectUIStateWithLifecycle
 import com.berg.rickapp.domain.model.Character
 import com.berg.rickapp.features.home.HomeViewModel
 
@@ -39,16 +39,16 @@ import com.berg.rickapp.features.home.HomeViewModel
 fun HomeScreenRoot(
     viewModel: HomeViewModel,
 ) {
-    val pagingCharacters = viewModel.stateRandomCharacters.collectAsState()
-    val refreshing by viewModel.isRefreshing.collectAsState()
+    val uiState by viewModel.collectUIStateWithLifecycle()
 
     val refreshState = rememberPullRefreshState(
-        refreshing = refreshing,
+        refreshing = uiState.isLoading,
         onRefresh = { viewModel.retry() }
     )
 
     HomeScreen(
-        items = pagingCharacters.value,
+        items = uiState.data,
+        refreshing = uiState.isLoading,
         pullRefreshState = refreshState,
         gotoDetails = { viewModel.gotoDetails() },
     )
@@ -65,7 +65,9 @@ fun HomeScreen(
         topBar = { AppBar() },
         content = { padding ->
             Box(
-                modifier = Modifier.pullRefresh(pullRefreshState).padding(top = 16.dp),
+                modifier = Modifier
+                    .pullRefresh(pullRefreshState)
+                    .padding(top = 16.dp),
                 contentAlignment = Alignment.TopCenter,
             ) {
                 Column(
@@ -82,7 +84,11 @@ fun HomeScreen(
                         }
                     }
                 }
-                PullRefreshIndicator(refreshing, pullRefreshState, Modifier.align(Alignment.TopCenter))
+                PullRefreshIndicator(
+                    refreshing,
+                    pullRefreshState,
+                    Modifier.align(Alignment.TopCenter)
+                )
             }
         }
     )

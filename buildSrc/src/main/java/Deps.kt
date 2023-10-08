@@ -22,6 +22,7 @@ object Deps {
         private const val versionComposeBom = "2023.05.01"
         private const val versionViewModelCompose = "2.5.1"
         private const val versionAccomponistMaterial = "0.30.1"
+        private const val versionLifecycleRuntimeCompose = "2.6.2"
         private const val versionPaging = "3.2.0"
         const val versionCompose = "1.4.1"
 
@@ -36,6 +37,8 @@ object Deps {
         const val uiTooling = "androidx.compose.ui:ui-tooling"
         const val viewModelCompose =
             "androidx.lifecycle:lifecycle-viewmodel-compose:$versionViewModelCompose"
+        const val lifecycleRuntimeCompose =
+            "androidx.lifecycle:lifecycle-runtime-compose:$versionLifecycleRuntimeCompose"
         const val accomponistThemeAdapterMaterial =
             "com.google.accompanist:accompanist-themeadapter-material:$versionAccomponistMaterial"
         const val paging = "androidx.paging:paging-compose:$versionPaging"
